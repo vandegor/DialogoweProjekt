@@ -7,20 +7,10 @@
 		<field name="patientNumber" type="digits?minlength=1;maxlength=2"
 			expr="1">
 			<prompt>Please enter your patient number.</prompt>
-			<filled>
-				Thank your patient number is,
-				<value expr="patientNumber" />
-				.
-			</filled>
 		</field>
 		<field name="patientPassword" type="digits?minlength=1;maxlength=2"
 			expr="10">
 			<prompt>Please enter your password number.</prompt>
-			<filled>
-				Thank your password number is,
-				<value expr="patientPassword" />
-				.
-			</filled>
 		</field>
 		<subdialog method="post" name="checkresults"
 			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/checkPass2"
@@ -30,6 +20,13 @@
 			<filled>
 				<if cond="checkresults.response=='YES'">
 					<prompt> Access granted. </prompt>
+					<prompt>
+						Welcome ,
+						<value expr="checkresults.name" />
+						,
+						<value expr="checkresults.surname" />
+						.
+					</prompt>
 					<goto next="#action" />
 					<else />
 					<clear namelist="patientNumber" />

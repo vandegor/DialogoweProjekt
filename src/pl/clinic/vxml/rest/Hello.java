@@ -66,16 +66,19 @@ public class Hello {
 			throws MalformedURLException, JAXBException, SQLException {
 		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File("D:\\workspace_neon\\DialogoweProjekt\\checkAuth.xml"));
 		Form form = (Form) vxml.getDataOrCatchOrHelp().get(0);
-		Var var = (Var) form.getCatchOrHelpOrNoinput().get(0);
+		Var response = (Var) form.getCatchOrHelpOrNoinput().get(0);
+		Var name = (Var) form.getCatchOrHelpOrNoinput().get(1);
+		Var surname = (Var) form.getCatchOrHelpOrNoinput().get(2);
 
 		DaoUtils daoUtils = DaoUtils.getDaoUtils();
-		// daoUtils.createTableIfNotExists();
-		// daoUtils.createSampleData();
 		List<Patient> patients = daoUtils.getPatientDao().queryForEq("login", patientNumber);
 		if (patients.size() == 1 && patients.get(0).getPassword().equals(patientPassword)) {
-			var.setExpr("'YES'");
+			Patient patient = patients.get(0);
+			name.setExpr("'" + patient.getName() + "'");
+			surname.setExpr("'" + patient.getName() + "'");
+			response.setExpr("'YES'");
 		} else {
-			var.setExpr("'NO'");
+			response.setExpr("'NO'");
 		}
 		return Response.ok(vxml, MediaType.TEXT_XML).build();
 	}
