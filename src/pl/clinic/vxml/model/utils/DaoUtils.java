@@ -14,8 +14,7 @@ import pl.clinic.vxml.model.TimeOfDay;
 import pl.clinic.vxml.model.Visit;
 
 public class DaoUtils {
-	//public static final String connection = "jdbc:sqlite:C:\\workspaces\\workspace_neon\\Dialogowe\\dialogowe.sqlite";
-	public static final String connection = "jdbc:sqlite:D:\\workspace_neon\\DialogoweProjekt\\dialogowe.sqlite";
+	public static final String connection = "jdbc:sqlite:" + ProjectURL.getProjectURL("dialogowe.sqlite");
 
 	private Dao<Patient, Integer> patientDao;
 	private Dao<TimeOfDay, Integer> timeOfDayDao;

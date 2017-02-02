@@ -21,7 +21,7 @@
 				<if cond="checkresults.response=='YES'">
 					<prompt> Access granted. </prompt>
 					<prompt>
-						Welcome ,
+						Welcome.
 						<value expr="checkresults.name" />
 						,
 						<value expr="checkresults.surname" />
@@ -52,14 +52,6 @@
 					</one-of>
 				</rule>
 			</grammar>
-			<noinput>
-				I did not hear anything. Please try again.
-				<reprompt />
-			</noinput>
-			<nomatch>
-				I did not recognize this. Please try again.
-				<reprompt />
-			</nomatch>
 			<filled>
 				<if cond="actionType == 'new'">
 					<prompt>
@@ -97,14 +89,6 @@
 					</one-of>
 				</rule>
 			</grammar>
-			<noinput>
-				I did not hear anything. Please try again.
-				<reprompt />
-			</noinput>
-			<nomatch>
-				I did not recognize this. Please try again.
-				<reprompt />
-			</nomatch>
 			<filled>
 				<prompt>
 					You chose doctor,
@@ -125,14 +109,6 @@
 					</one-of>
 				</rule>
 			</grammar>
-			<noinput>
-				I did not hear anything. Please try again.
-				<reprompt />
-			</noinput>
-			<nomatch>
-				I did not recognize this. Please try again.
-				<reprompt />
-			</nomatch>
 			<filled>
 				<prompt>
 					Visit correctly appointment with doctor,

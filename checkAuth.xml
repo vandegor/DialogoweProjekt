@@ -5,7 +5,7 @@
 		<var name="name"/>
 		<var name="surname"/>
 		<block>
-			<return namelist="response" />
+			<return namelist="response name surname" />
 		</block>
 	</form>
 </vxml>

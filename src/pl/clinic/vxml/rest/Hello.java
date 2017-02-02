@@ -13,16 +13,15 @@ import javax.ws.rs.Path;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
-import model.java.vxml.Block;
 import model.java.vxml.Form;
 import model.java.vxml.Var;
 import model.java.vxml.Vxml;
 import pl.clinic.vxml.model.Patient;
 import pl.clinic.vxml.model.utils.DaoUtils;
+import pl.clinic.vxml.model.utils.ProjectURL;
 import pl.clinic.vxml.model.utils.UnmarshallerUtils;
 
 @Path("/clinicRest")
@@ -33,7 +32,7 @@ public class Hello {
 	@Produces(MediaType.TEXT_XML)
 	@Path("/main")
 	public Vxml sayPlainTextHello() throws MalformedURLException, JAXBException, SQLException {
-		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File("D:\\workspace_neon\\DialogoweProjekt\\main.xml"));
+		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("main.xml")));
 		Form form = vxml.getDataOrCatchOrHelp().stream()
 				.filter(o -> o instanceof Form && ((Form) o).getId().equals("action")).map(o -> (Form) o).findFirst()
 				.get();
@@ -47,7 +46,7 @@ public class Hello {
 	public Response sayXMLHello(@FormParam("patientNumber") String patientNumber,
 			@FormParam("patientPassword") String patientPassword)
 			throws MalformedURLException, JAXBException, SQLException {
-		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File("D:\\workspace_neon\\DialogoweProjekt\\subdialog.xml"));
+		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("subdialog.xml")));
 		// ObjectFactory factory = new ObjectFactory();
 		// Form form = factory.createForm("check");
 		// Block block = factory.createBlock();
@@ -64,7 +63,7 @@ public class Hello {
 	public Response sayXMLHello2(@FormParam("patientNumber") Integer patientNumber,
 			@FormParam("patientPassword") Integer patientPassword)
 			throws MalformedURLException, JAXBException, SQLException {
-		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File("D:\\workspace_neon\\DialogoweProjekt\\checkAuth.xml"));
+		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("checkAuth.xml")));
 		Form form = (Form) vxml.getDataOrCatchOrHelp().get(0);
 		Var response = (Var) form.getCatchOrHelpOrNoinput().get(0);
 		Var name = (Var) form.getCatchOrHelpOrNoinput().get(1);
@@ -75,7 +74,7 @@ public class Hello {
 		if (patients.size() == 1 && patients.get(0).getPassword().equals(patientPassword)) {
 			Patient patient = patients.get(0);
 			name.setExpr("'" + patient.getName() + "'");
-			surname.setExpr("'" + patient.getName() + "'");
+			surname.setExpr("'" + patient.getSurname() + "'");
 			response.setExpr("'YES'");
 		} else {
 			response.setExpr("'NO'");
