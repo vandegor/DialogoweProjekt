@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml xmlns="http://www.w3.org/2001/vxml" version="2.1">
-	<form id="authentication">
+	<form>
 		<block>
 			<prompt>Welcome, in Clinic XYZ system.</prompt>
 		</block>
@@ -53,26 +53,35 @@
 				</rule>
 			</grammar>
 			<filled>
-				<if cond="actionType == 'new'">
+				<if cond="actionType == 'other'">
+
+
+					<elseif cond="actionType == 'new'" />
 					<prompt>You chose to make a new visit.</prompt>
-					<subdialog method="post" name="checkresults"
+					<subdialog method="post" name="new"
 						src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/newVisit"
 						namelist="checkresults.patientId">
+						<param name="checkresults.patientId" expr="checkresults.patientId" />
 					</subdialog>
-				</if>
-				<if cond="actionType == 'postpone'">
+
+
+					<elseif cond="actionType == 'postpone'" />
 					<prompt>You chose to postpone a visit.</prompt>
-					<subdialog method="post" name="checkresults"
+					<subdialog method="post" name="postpone"
 						src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/postponeVisit"
 						namelist="checkresults.patientId">
+						<param name="checkresults.patientId" expr="checkresults.patientId" />
 					</subdialog>
-				</if>
-				<if cond="actionType == 'cancel'">
+
+
+					<elseif cond="actionType == 'cancel'" />
 					<prompt>You chose to cancel a visit.</prompt>
-					<subdialog method="post" name="checkresults"
+					<subdialog method="post" name="cancel"
 						src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/cancelVisit"
 						namelist="checkresults.patientId">
+						<param name="checkresults.patientId" expr="checkresults.patientId" />
 					</subdialog>
+
 				</if>
 			</filled>
 		</field>

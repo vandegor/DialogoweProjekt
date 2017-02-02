@@ -37,6 +37,24 @@ public class Hello {
 	}
 
 	@POST
+	@Path("/createVisit")
+	@Produces(MediaType.TEXT_XML)
+	@Consumes("application/x-www-form-urlencoded")
+	public Response createVisit(@FormParam("checkresults.patientId") Integer patientId)
+			throws MalformedURLException, JAXBException, SQLException {
+		return Response.ok().build();
+	}
+
+	@POST
+	@Path("/deleteVisit")
+	@Produces(MediaType.TEXT_XML)
+	@Consumes("application/x-www-form-urlencoded")
+	public Response deleteVisit(@FormParam("checkresults.patientId") Integer patientId)
+			throws MalformedURLException, JAXBException, SQLException {
+		return Response.ok().build();
+	}
+
+	@POST
 	@Path("/selectDoctor")
 	@Produces(MediaType.TEXT_XML)
 	@Consumes("application/x-www-form-urlencoded")
