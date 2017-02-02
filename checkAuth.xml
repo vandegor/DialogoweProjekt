@@ -4,6 +4,7 @@
 		<var name="response"/>
 		<var name="name"/>
 		<var name="surname"/>
+		<var name="patientId"/>
 		<block>
 			<return namelist="response name surname" />
 		</block>
