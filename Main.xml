@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/vxml" version="2.1">
+	<form id="authentication">
+		<block>
+			<prompt>Welcome, in Clinic XYZ system.</prompt>
+		</block>
+		<field name="patientNumber"  type="digits?minlength=1;maxlength=2" expr="1" >
+			<prompt>Please enter your patient number.</prompt>
+			<filled>
+				Thank your patient number is,
+				<value expr="patientNumber" />
+				.
+			</filled>
+		</field>
+		<field name="patientPassword" type="digits?minlength=1;maxlength=2" expr="1" >
+			<prompt>Please enter your password number.</prompt>
+			<filled>
+				Thank your password number is,
+				<value expr="patientPassword" />
+				.
+			</filled>
+		</field>
+		<subdialog method="post" name="checkresults" src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/checkPass" namelist="patientNumber patientPassword" >
+			<param name="patientNumber" expr="patientNumber" />
+			<param name="patientPassword" expr="patientPassword" />
+			<filled>
+				<if cond="checkresults.response=='YES'">
+					<prompt> Access granted. </prompt>
+					<goto next="#action" />
+					<else />
+					<clear namelist="patientNumber" />
+					<clear namelist="patientPassword" />
+					<clear namelist="checkresults" />
+					<prompt>Please try again.</prompt>
+				</if>
+			</filled>
+		</subdialog>
+	</form>
+	<form id="action">
+		<field name="actionType">
+			<prompt>
+				Please provide information what action do you want to take.
+				New visit, Postpone visit, Cancel visit
+			</prompt>
+			<grammar xml:lang="en-us" root="myrule">
+				<rule id="myrule">
+					<one-of>
+						<item>new</item>
+						<item>postpone</item>
+						<item>cancel</item>
+					</one-of>
+				</rule>
+			</grammar>
+			<noinput>
+				I did not hear anything. Please try again.
+				<reprompt />
+			</noinput>
+			<nomatch>
+				I did not recognize this. Please try again.
+				<reprompt />
+			</nomatch>
+			<filled>
+				<if cond="actionType == 'new'">
+					<prompt>
+						You chose to make a new visit.
+					</prompt>
+				</if>
+				<if cond="actionType == 'postpone'">
+					<prompt>
+						You chose to postpone a visit.
+					</prompt>
+				</if>
+				<if cond="actionType == 'cancel'">
+					<prompt>
+						You chose to cancel a visit.
+					</prompt>
+				</if>
+			</filled>
+		</field>
+
+		<var name="doctorNames" expr="new Array('Smith','Kowalski','Nowak')" />
+		<field name="doctorName" cond="actionType == 'new'">
+			<prompt>
+				Please provide doctor Name for new visit.
+				<foreach item="item" array="doctorNames">
+					<value expr="item" />
+					,
+				</foreach>
+			</prompt>
+			<grammar xml:lang="en-us" root="myrule">
+				<rule id="myrule">
+					<one-of>
+						<item>smith</item>
+						<item>kowalski</item>
+						<item>nowak</item>
+					</one-of>
+				</rule>
+			</grammar>
+			<noinput>
+				I did not hear anything. Please try again.
+				<reprompt />
+			</noinput>
+			<nomatch>
+				I did not recognize this. Please try again.
+				<reprompt />
+			</nomatch>
+			<filled>
+				<prompt>
+					You chose doctor,
+					<value expr="doctorName" />
+					.
+				</prompt>
+			</filled>
+		</field>
+		<field name="visitTime" cond="actionType == 'new'">
+			<prompt>
+				Please provide visit time. Morning, afternoon.
+			</prompt>
+			<grammar xml:lang="en-us" root="myrule">
+				<rule id="myrule">
+					<one-of>
+						<item>morning</item>
+						<item>afternoon</item>
+					</one-of>
+				</rule>
+			</grammar>
+			<noinput>
+				I did not hear anything. Please try again.
+				<reprompt />
+			</noinput>
+			<nomatch>
+				I did not recognize this. Please try again.
+				<reprompt />
+			</nomatch>
+			<filled>
+				<prompt>
+					Visit correctly appointment with doctor,
+					<value expr="doctorName" />
+					, on
+					<value expr="visitTime" />
+					, time.
+				</prompt>
+			</filled>
+		</field>
+	</form>
+</vxml>

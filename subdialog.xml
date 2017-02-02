@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<vxml xmlns="http://www.w3.org/2001/vxml" version="2.1">
+	<form>
+		<var name="patientNumbers" expr="new Array(0,1,2,3,4,5,6,7,8,9)" />
+		<var name="patientPasswords" expr="new Array(0,1,2,3,4,5,6,7,8,9)" />
+		<var name="patientNumber" expr="patientNumber" />
+		<var name="patientPassword" expr="patientPassword" />
+		<block name="patientNumberOK">
+			<foreach item="item" array="patientNumbers">
+				<if cond="patientNumber == item">
+					<assign name="patientNumberOK" expr="'OK'" />
+					<goto nextitem="patientPasswordOK" />
+				</if>
+			</foreach>
+		</block>
+		<block name="patientPasswordOK">
+			<foreach item="item" array="patientPasswords">
+				<if cond="patientPassword == item">
+					<assign name="patientPasswordOK" expr="'OK'" />
+					<goto nextitem="response" />
+				</if>
+			</foreach>
+		</block>
+		<block name="response">
+			<if cond="(patientNumberOK == 'OK')&amp;&amp;(patientPasswordOK =='OK')">
+				<prompt>
+					You enter correct patient number,
+					<value expr="patientNumber" />
+					, and your patient password
+					<value expr="patientPassword" />
+					.
+				</prompt>
+				<assign name="response" expr="'YES'" />
+				<return namelist="response" />
+				<else />
+				<assign name="response" expr="'NO'" />
+				<prompt>
+					You enter wrong patient number,
+					<value expr="patientNumber" />
+					, or patient password
+					<value expr="patientPassword" />
+					.
+				</prompt>
+				<return namelist="response" />
+			</if>
+		</block>
+	</form>
+</vxml>
