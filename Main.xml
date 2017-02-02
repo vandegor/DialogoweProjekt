@@ -4,7 +4,8 @@
 		<block>
 			<prompt>Welcome, in Clinic XYZ system.</prompt>
 		</block>
-		<field name="patientNumber"  type="digits?minlength=1;maxlength=2" expr="1" >
+		<field name="patientNumber" type="digits?minlength=1;maxlength=2"
+			expr="1">
 			<prompt>Please enter your patient number.</prompt>
 			<filled>
 				Thank your patient number is,
@@ -12,7 +13,8 @@
 				.
 			</filled>
 		</field>
-		<field name="patientPassword" type="digits?minlength=1;maxlength=2" expr="1" >
+		<field name="patientPassword" type="digits?minlength=1;maxlength=2"
+			expr="10">
 			<prompt>Please enter your password number.</prompt>
 			<filled>
 				Thank your password number is,
@@ -20,7 +22,9 @@
 				.
 			</filled>
 		</field>
-		<subdialog method="post" name="checkresults" src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/checkPass" namelist="patientNumber patientPassword" >
+		<subdialog method="post" name="checkresults"
+			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/checkPass2"
+			namelist="patientPassword patientNumber">
 			<param name="patientNumber" expr="patientNumber" />
 			<param name="patientPassword" expr="patientPassword" />
 			<filled>

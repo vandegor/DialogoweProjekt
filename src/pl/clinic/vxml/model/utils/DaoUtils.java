@@ -1,4 +1,4 @@
-package pl.clinic.vxml.model;
+package pl.clinic.vxml.model.utils;
 
 import java.sql.SQLException;
 
@@ -8,7 +8,14 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
+import pl.clinic.vxml.model.Doctor;
+import pl.clinic.vxml.model.Patient;
+import pl.clinic.vxml.model.TimeOfDay;
+import pl.clinic.vxml.model.Visit;
+
 public class DaoUtils {
+	//public static final String connection = "jdbc:sqlite:C:\\workspaces\\workspace_neon\\Dialogowe\\dialogowe.sqlite";
+	public static final String connection = "jdbc:sqlite:D:\\workspace_neon\\DialogoweProjekt\\dialogowe.sqlite";
 
 	private Dao<Patient, Integer> patientDao;
 	private Dao<TimeOfDay, Integer> timeOfDayDao;
@@ -17,23 +24,21 @@ public class DaoUtils {
 	private static DaoUtils daoUtils;
 
 	private DaoUtils() throws SQLException {
-		patientDao = DaoManager.createDao(new JdbcConnectionSource(connection), Patient.class);
-		timeOfDayDao = DaoManager.createDao(new JdbcConnectionSource(connection), TimeOfDay.class);
-		doctorDao = DaoManager.createDao(new JdbcConnectionSource(connection), Doctor.class);
-		visitDao = DaoManager.createDao(new JdbcConnectionSource(connection), Visit.class);
+		patientDao = DaoManager.createDao(getsource(), Patient.class);
+		timeOfDayDao = DaoManager.createDao(getsource(), TimeOfDay.class);
+		doctorDao = DaoManager.createDao(getsource(), Doctor.class);
+		visitDao = DaoManager.createDao(getsource(), Visit.class);
 	}
-
-	public static final String connection = "jdbc:sqlite:C:\\workspaces\\workspace_neon\\Dialogowe\\dialogowe.sqlite";
 
 	ConnectionSource getsource() throws SQLException {
 		return new JdbcConnectionSource(connection);
 	}
 
 	public void createTableIfNotExists() throws SQLException {
-		TableUtils.createTableIfNotExists(new JdbcConnectionSource(connection), Patient.class);
-		TableUtils.createTableIfNotExists(new JdbcConnectionSource(connection), TimeOfDay.class);
-		TableUtils.createTableIfNotExists(new JdbcConnectionSource(connection), Doctor.class);
-		TableUtils.createTableIfNotExists(new JdbcConnectionSource(connection), Visit.class);
+		TableUtils.createTableIfNotExists(getsource(), Patient.class);
+		TableUtils.createTableIfNotExists(getsource(), TimeOfDay.class);
+		TableUtils.createTableIfNotExists(getsource(), Doctor.class);
+		TableUtils.createTableIfNotExists(getsource(), Visit.class);
 	}
 
 	public void createSampleData() throws SQLException {
