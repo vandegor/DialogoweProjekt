@@ -5,9 +5,9 @@
 // Generated on: 2017.02.02 at 12:05:55 AM CET 
 //
 
-
 package model.java.vxml;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import javax.xml.bind.JAXBElement;
@@ -23,11 +23,13 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
-
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -55,236 +57,236 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "content"
-})
+@XmlType(name = "", propOrder = { "content" })
 @XmlRootElement(name = "field")
 public class Field {
 
-    @XmlElementRefs({
-        @XmlElementRef(name = "catch", namespace = "http://www.w3.org/2001/vxml", type = Catch.class, required = false),
-        @XmlElementRef(name = "noinput", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "help", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "property", namespace = "http://www.w3.org/2001/vxml", type = Property.class, required = false),
-        @XmlElementRef(name = "prompt", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "option", namespace = "http://www.w3.org/2001/vxml", type = Option.class, required = false),
-        @XmlElementRef(name = "value", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "audio", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "nomatch", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "filled", namespace = "http://www.w3.org/2001/vxml", type = Filled.class, required = false),
-        @XmlElementRef(name = "grammar", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "link", namespace = "http://www.w3.org/2001/vxml", type = Link.class, required = false),
-        @XmlElementRef(name = "enumerate", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "error", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false)
-    })
-    @XmlMixed
-    protected List<java.lang.Object> content;
-    @XmlAttribute(name = "type")
-    protected String type;
-    @XmlAttribute(name = "slot")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlSchemaType(name = "NMTOKEN")
-    protected String slot;
-    @XmlAttribute(name = "modal")
-    protected List<String> modal;
-    @XmlAttribute(name = "cond")
-    protected String cond;
-    @XmlAttribute(name = "name")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String name;
-    @XmlAttribute(name = "expr")
-    protected String expr;
+	@XmlElementRefs({
+			@XmlElementRef(name = "catch", namespace = "http://www.w3.org/2001/vxml", type = Catch.class, required = false),
+			@XmlElementRef(name = "noinput", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "help", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "property", namespace = "http://www.w3.org/2001/vxml", type = Property.class, required = false),
+			@XmlElementRef(name = "prompt", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "option", namespace = "http://www.w3.org/2001/vxml", type = Option.class, required = false),
+			@XmlElementRef(name = "value", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "audio", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "nomatch", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "filled", namespace = "http://www.w3.org/2001/vxml", type = Filled.class, required = false),
+			@XmlElementRef(name = "grammar", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "link", namespace = "http://www.w3.org/2001/vxml", type = Link.class, required = false),
+			@XmlElementRef(name = "enumerate", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "error", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false) })
+	@XmlMixed
+	protected List<java.lang.Object> content;
+	@XmlAttribute(name = "type")
+	protected String type;
+	@XmlAttribute(name = "slot")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlSchemaType(name = "NMTOKEN")
+	protected String slot;
+	@XmlAttribute(name = "modal")
+	protected List<String> modal;
+	@XmlAttribute(name = "cond")
+	protected String cond;
+	@XmlAttribute(name = "name")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String name;
+	@XmlAttribute(name = "expr")
+	protected String expr;
 
-    /**
-     * Gets the value of the content property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the content property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getContent().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Catch }
-     * {@link JAXBElement }{@code <}{@link BasicEventHandler }{@code >}
-     * {@link JAXBElement }{@code <}{@link BasicEventHandler }{@code >}
-     * {@link Property }
-     * {@link JAXBElement }{@code <}{@link VxmlSpeak }{@code >}
-     * {@link Option }
-     * {@link JAXBElement }{@code <}{@link Value }{@code >}
-     * {@link JAXBElement }{@code <}{@link Audio }{@code >}
-     * {@link JAXBElement }{@code <}{@link BasicEventHandler }{@code >}
-     * {@link Filled }
-     * {@link JAXBElement }{@code <}{@link MixedGrammar }{@code >}
-     * {@link Link }
-     * {@link String }
-     * {@link JAXBElement }{@code <}{@link Enumerate }{@code >}
-     * {@link JAXBElement }{@code <}{@link BasicEventHandler }{@code >}
-     * 
-     * 
-     */
-    public List<java.lang.Object> getContent() {
-        if (content == null) {
-            content = new ArrayList<java.lang.Object>();
-        }
-        return this.content;
-    }
+	/**
+	 * Gets the value of the content property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the content property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getContent().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Catch }
+	 * {@link JAXBElement }{@code <}{@link BasicEventHandler }{@code >}
+	 * {@link JAXBElement }{@code <}{@link BasicEventHandler }{@code >}
+	 * {@link Property } {@link JAXBElement }{@code <}{@link VxmlSpeak
+	 * }{@code >} {@link Option } {@link JAXBElement }{@code <}{@link Value
+	 * }{@code >} {@link JAXBElement }{@code <}{@link Audio }{@code >}
+	 * {@link JAXBElement }{@code <}{@link BasicEventHandler }{@code >}
+	 * {@link Filled } {@link JAXBElement }{@code <}{@link MixedGrammar
+	 * }{@code >} {@link Link } {@link String } {@link JAXBElement
+	 * }{@code <}{@link Enumerate }{@code >} {@link JAXBElement
+	 * }{@code <}{@link BasicEventHandler }{@code >}
+	 * 
+	 * 
+	 */
+	public List<java.lang.Object> getContent() {
+		if (content == null) {
+			content = new ArrayList<java.lang.Object>();
+		}
+		return this.content;
+	}
 
-    /**
-     * Gets the value of the type property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getType() {
-        return type;
-    }
+	/**
+	 * Gets the value of the type property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getType() {
+		return type;
+	}
 
-    /**
-     * Sets the value of the type property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setType(String value) {
-        this.type = value;
-    }
+	/**
+	 * Sets the value of the type property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setType(String value) {
+		this.type = value;
+	}
 
-    /**
-     * Gets the value of the slot property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getSlot() {
-        return slot;
-    }
+	/**
+	 * Gets the value of the slot property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getSlot() {
+		return slot;
+	}
 
-    /**
-     * Sets the value of the slot property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setSlot(String value) {
-        this.slot = value;
-    }
+	/**
+	 * Sets the value of the slot property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setSlot(String value) {
+		this.slot = value;
+	}
 
-    /**
-     * Gets the value of the modal property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the modal property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getModal().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
-     */
-    public List<String> getModal() {
-        if (modal == null) {
-            modal = new ArrayList<String>();
-        }
-        return this.modal;
-    }
+	/**
+	 * Gets the value of the modal property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the modal property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getModal().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link String }
+	 * 
+	 * 
+	 */
+	public List<String> getModal() {
+		if (modal == null) {
+			modal = new ArrayList<String>();
+		}
+		return this.modal;
+	}
 
-    /**
-     * Gets the value of the cond property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCond() {
-        return cond;
-    }
+	/**
+	 * Gets the value of the cond property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getCond() {
+		return cond;
+	}
 
-    /**
-     * Sets the value of the cond property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCond(String value) {
-        this.cond = value;
-    }
+	/**
+	 * Sets the value of the cond property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setCond(String value) {
+		this.cond = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
-    /**
-     * Gets the value of the expr property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getExpr() {
-        return expr;
-    }
+	/**
+	 * Gets the value of the expr property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getExpr() {
+		return expr;
+	}
 
-    /**
-     * Sets the value of the expr property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setExpr(String value) {
-        this.expr = value;
-    }
+	/**
+	 * Sets the value of the expr property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setExpr(String value) {
+		this.expr = value;
+	}
+
+	public void addGrammar(List<String> strings) {
+
+		ObjectFactory factory = new ObjectFactory();
+		Grammar grammar = factory.createGrammar(this.getContent());
+		grammar.setLang("en-us");
+		Rule rule = factory.createRule(grammar.getRule());
+		OneOf oneOf = factory.createOneOf(rule.getContent());
+		for (String string : strings) {
+			Item item = factory.createItem();
+			oneOf.getItem().add(item);
+			item.getContent().add(string);
+		}
+	}
+
+	public void addPrompt(List<String> strings) {
+		ObjectFactory factory = new ObjectFactory();
+		VxmlSpeak speak = factory.createVxmlSpeak(this.getContent());
+		for (String string : strings) {
+			speak.getContent().add(string);
+		}
+	}
 
 }

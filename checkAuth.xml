@@ -6,7 +6,7 @@
 		<var name="surname"/>
 		<var name="patientId"/>
 		<block>
-			<return namelist="response name surname" />
+			<return namelist="response name surname patientId" />
 		</block>
 	</form>
 </vxml>

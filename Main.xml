@@ -1,13 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml xmlns="http://www.w3.org/2001/vxml" version="2.1">
 	<form>
+		<var name="patientId" />
 		<block>
 			<prompt>Welcome, in Clinic XYZ system.</prompt>
 		</block>
-		<field name="patientNumber" type="digits?minlength=1;maxlength=2">
+		<field name="patientNumber" type="digits?minlength=1;maxlength=2"
+			expr="1">
 			<prompt>Please enter your patient number.</prompt>
 		</field>
-		<field name="patientPassword" type="digits?minlength=1;maxlength=2">
+		<field name="patientPassword" type="digits?minlength=1;maxlength=2"
+			expr="10">
 			<prompt>Please enter your password number.</prompt>
 		</field>
 		<subdialog method="post" name="checkresults"
@@ -17,6 +20,7 @@
 			<param name="patientPassword" expr="patientPassword" />
 			<filled>
 				<if cond="checkresults.response=='YES'">
+					<assign name="patientId" expr="checkresults.patientId" />
 					<prompt> Access granted. </prompt>
 					<prompt>
 						Welcome.
@@ -25,6 +29,7 @@
 						<value expr="checkresults.surname" />
 						.
 					</prompt>
+
 					<else />
 					<clear namelist="patientNumber" />
 					<clear namelist="patientPassword" />
@@ -43,8 +48,8 @@
 				Please provide information what action do you want to take.
 				New visit, Postpone visit, Cancel visit
 			</prompt>
-			<grammar xml:lang="en-us" root="myrule">
-				<rule id="myrule">
+			<grammar xml:lang="en-us">
+				<rule>
 					<one-of>
 						<item>new</item>
 						<item>postpone</item>
@@ -52,38 +57,29 @@
 					</one-of>
 				</rule>
 			</grammar>
-			<filled>
-				<if cond="actionType == 'other'">
-
-
-					<elseif cond="actionType == 'new'" />
-					<prompt>You chose to make a new visit.</prompt>
-					<subdialog method="post" name="new"
-						src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/newVisit"
-						namelist="checkresults.patientId">
-						<param name="checkresults.patientId" expr="checkresults.patientId" />
-					</subdialog>
-
-
-					<elseif cond="actionType == 'postpone'" />
-					<prompt>You chose to postpone a visit.</prompt>
-					<subdialog method="post" name="postpone"
-						src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/postponeVisit"
-						namelist="checkresults.patientId">
-						<param name="checkresults.patientId" expr="checkresults.patientId" />
-					</subdialog>
-
-
-					<elseif cond="actionType == 'cancel'" />
-					<prompt>You chose to cancel a visit.</prompt>
-					<subdialog method="post" name="cancel"
-						src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/cancelVisit"
-						namelist="checkresults.patientId">
-						<param name="checkresults.patientId" expr="checkresults.patientId" />
-					</subdialog>
-
-				</if>
-			</filled>
+			<!-- <filled> <if cond="actionType == 'other'"> <elseif cond="actionType 
+				== 'new'" /> <prompt>You chose to make a new visit.</prompt> <elseif cond="actionType 
+				== 'postpone'" /> <prompt>You chose to postpone a visit.</prompt> <elseif 
+				cond="actionType == 'cancel'" /> <prompt>You chose to cancel a visit.</prompt> 
+				</if> </filled> -->
 		</field>
+
+		<subdialog method="post" name="newSubdialog" cond="actionType == 'new'"
+			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/newVisit"
+			namelist="patientId">
+			<param name="patientId" expr="patientId" />
+		</subdialog>
+
+		<subdialog method="post" name="postponeSubdialog" cond="actionType == 'postpone'"
+			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/postponeVisit"
+			namelist="patientId">
+			<param name="patientId" expr="patientId" />
+		</subdialog>
+
+		<subdialog method="post" name="cancelSubdialog" cond="actionType == 'cancel'"
+			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/cancelVisit"
+			namelist="patientId">
+			<param name="patientId" expr="patientId" />
+		</subdialog>
 	</form>
 </vxml>

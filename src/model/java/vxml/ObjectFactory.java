@@ -7,6 +7,9 @@
 
 package model.java.vxml;
 
+import java.io.Serializable;
+import java.util.List;
+
 import javax.xml.bind.JAXBElement;
 import javax.xml.bind.annotation.XmlElementDecl;
 import javax.xml.bind.annotation.XmlRegistry;
@@ -107,6 +110,16 @@ public class ObjectFactory {
 	 */
 	public Prosody createProsody() {
 		return new Prosody();
+	}
+
+	/**
+	 * Create an instance of {@link Grammar }
+	 * 
+	 */
+	public Grammar createGrammar(List<java.lang.Object> content) {
+		Grammar grammar = createGrammar();
+		content.add(createGrammar(grammar));
+		return grammar;
 	}
 
 	/**
@@ -245,6 +258,16 @@ public class ObjectFactory {
 		return new Reprompt();
 	}
 
+	
+	/**
+	 * Create an instance of {@link Return }
+	 * 
+	 */
+	public Return createReturn(List<java.lang.Object> content) {
+		Return ret = createReturn();
+		content.add(ret);
+		return ret;
+	}
 	/**
 	 * Create an instance of {@link Return }
 	 * 
@@ -283,6 +306,16 @@ public class ObjectFactory {
 	 */
 	public Var createVar() {
 		return new Var();
+	}
+
+	/**
+	 * Create an instance of {@link VxmlSpeak }
+	 * 
+	 */
+	public VxmlSpeak createVxmlSpeak(List<java.lang.Object> content) {
+		VxmlSpeak vxmlSpeak = createVxmlSpeak();
+		content.add(createPrompt(vxmlSpeak));
+		return vxmlSpeak;
 	}
 
 	/**
@@ -329,6 +362,16 @@ public class ObjectFactory {
 	 * Create an instance of {@link Block }
 	 * 
 	 */
+	public Block createBlock(List<java.lang.Object> content) {
+		Block block = createBlock();
+		content.add(block);
+		return block;
+	}
+
+	/**
+	 * Create an instance of {@link Block }
+	 * 
+	 */
 	public Block createBlock() {
 		return new Block();
 	}
@@ -353,8 +396,38 @@ public class ObjectFactory {
 	 * Create an instance of {@link Field }
 	 * 
 	 */
+	public Field createField(List<java.lang.Object> content) {
+		Field object = new Field();
+		content.add(object);
+		return object;
+	}
+
+	/**
+	 * Create an instance of {@link Field }
+	 * 
+	 */
+	public Field createField(String name, List<java.lang.Object> content) {
+		Field object = createField(content);
+		object.setName(name);
+		return object;
+	}
+
+	/**
+	 * Create an instance of {@link Field }
+	 * 
+	 */
 	public Field createField() {
 		return new Field();
+	}
+
+	/**
+	 * Create an instance of {@link Field }
+	 * 
+	 */
+	public Field createField(String name) {
+		Field field = new Field();
+		field.setName(name);
+		return field;
 	}
 
 	/**
@@ -417,8 +490,30 @@ public class ObjectFactory {
 	 * Create an instance of {@link Form }
 	 * 
 	 */
+	public Form createForm(String id, List<java.lang.Object> content) {
+		Form object = createForm(id);
+		content.add(object);
+		return object;
+	}
+
+	/**
+	 * Create an instance of {@link Form }
+	 * 
+	 */
+	public Form createForm(List<java.lang.Object> content) {
+		Form object = createForm();
+		content.add(object);
+		return object;
+	}
+
+	/**
+	 * Create an instance of {@link Form }
+	 * 
+	 */
 	public Form createForm(String id) {
-		return new Form();
+		Form object = createForm();
+		object.setId(id);
+		return object;
 	}
 
 	/**
@@ -553,6 +648,16 @@ public class ObjectFactory {
 	 * Create an instance of {@link OneOf }
 	 * 
 	 */
+	public OneOf createOneOf(List<Serializable> content) {
+		OneOf oneOf = new OneOf();
+		content.add(this.createRuleOneOf(oneOf));
+		return oneOf;
+	}
+
+	/**
+	 * Create an instance of {@link OneOf }
+	 * 
+	 */
 	public OneOf createOneOf() {
 		return new OneOf();
 	}
@@ -571,6 +676,16 @@ public class ObjectFactory {
 	 */
 	public Rule createRule() {
 		return new Rule();
+	}
+
+	/**
+	 * Create an instance of {@link Rule }
+	 * 
+	 */
+	public Rule createRule(List<Rule> content) {
+		Rule rule = new Rule();
+		content.add(rule);
+		return rule;
 	}
 
 	/**
