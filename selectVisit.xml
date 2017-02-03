@@ -1,3 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml xmlns="http://www.w3.org/2001/vxml" version="2.1">
+	<var name="checkresults.patientId" expr="checkresults.patientId" />
+	<subdialog method="post" name="listVisits"
+		src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/listVisits"
+		namelist="checkresults.patientId">
+		<param name="checkresults.patientId" expr="checkresults.patientId" />
+	</subdialog>
 </vxml>
