@@ -83,6 +83,17 @@ public class Hello {
 		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("selectDate.xml")));
 		return Response.ok(vxml, MediaType.TEXT_XML).build();
 	}
+	
+	
+	@POST
+	@Path("/selectVisit")
+	@Produces(MediaType.TEXT_XML)
+	@Consumes("application/x-www-form-urlencoded")
+	public Response selectVisit(@FormParam("checkresults.patientId") Integer patientId)
+			throws MalformedURLException, JAXBException, SQLException {
+		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("selectVisit.xml")));
+		return Response.ok(vxml, MediaType.TEXT_XML).build();
+	}
 
 	@POST
 	@Path("/newVisit")
