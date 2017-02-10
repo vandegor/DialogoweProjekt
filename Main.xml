@@ -1,11 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml xmlns="http://www.w3.org/2001/vxml" version="2.1">
 	<form>
-		<var name="patientId" />
 		<block>
 			<prompt>Welcome, in Clinic XYZ system.</prompt>
 		</block>
-		<field name="patientNumber" type="digits?minlength=1;maxlength=2"
+		<field name="patientId" type="digits?minlength=1;maxlength=2"
 			expr="1">
 			<prompt>Please enter your patient number.</prompt>
 		</field>
@@ -13,14 +12,13 @@
 			expr="10">
 			<prompt>Please enter your password number.</prompt>
 		</field>
-		<subdialog method="post" name="checkresults"
+		<subdialog method="post" name="checkresults"  expr="1"
 			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/checkPass"
-			namelist="patientPassword patientNumber">
-			<param name="patientNumber" expr="patientNumber" />
+			namelist="patientPassword patientId">
+			<param name="patientId" expr="patientId" />
 			<param name="patientPassword" expr="patientPassword" />
 			<filled>
 				<if cond="checkresults.response=='YES'">
-					<assign name="patientId" expr="checkresults.patientId" />
 					<prompt> Access granted. </prompt>
 					<prompt>
 						Welcome.
@@ -31,7 +29,7 @@
 					</prompt>
 
 					<else />
-					<clear namelist="patientNumber" />
+					<clear namelist="patientId" />
 					<clear namelist="patientPassword" />
 					<clear namelist="checkresults" />
 					<prompt>
@@ -43,7 +41,7 @@
 				</if>
 			</filled>
 		</subdialog>
-		<field name="actionType">
+		<field name="actionType" expr="'new'">
 			<prompt>
 				Please provide information what action do you want to take.
 				New visit, Postpone visit, Cancel visit

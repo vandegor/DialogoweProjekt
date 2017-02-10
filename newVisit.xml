@@ -2,21 +2,53 @@
 <vxml xmlns="http://www.w3.org/2001/vxml" version="2.1">
 	<form>
 		<var name="patientId" expr="patientId" />
+		<var name="doctorId" />
+		<var name="date" />
+		<var name="timeOfDayId" />
+
 		<subdialog method="post" name="selectDoctor"
-			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/selectDoctor"
-			namelist="patientId">
-			<param name="patientId" expr="patientId" />
-		</subdialog>
-		<subdialog method="post" name="selectTime"
-			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/selectTime"
-			namelist="patientId">
-			<param name="patientId" expr="patientId" />
-		</subdialog>
-		<subdialog method="post" name="selectDate"
-			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/selectDate"
-			namelist="patientId">
-			<param name="patientId" expr="patientId" />
+			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/selectDoctor">
+			<filled>
+				<assign name="doctorId" expr="selectDoctor.selectDoctor" />
+				<prompt>
+					You provide.
+					<value expr="doctorId" />
+					.
+				</prompt>
+			</filled>
 		</subdialog>
 
+		<subdialog method="post" name="selectTime"
+			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/selectTime">
+			<filled>
+				<assign name="timeOfDayId" expr="selectTime.selectTime" />
+				<prompt>
+					You provide.
+					<value expr="timeOfDayId" />
+					.
+				</prompt>
+			</filled>
+		</subdialog>
+
+		<subdialog method="post" name="selectDate"
+			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/selectDate">
+			<filled>
+				<assign name="date" expr="selectDate.selectDate" />
+				<prompt>
+					You provide.
+					<value expr="date" />
+					.
+				</prompt>
+			</filled>
+		</subdialog>
+
+		<subdialog method="post" name="insertVisit"
+			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/insertVisit"
+			namelist="patientId doctorId date timeOfDayId">
+			<param name="patientId" expr="patientId" />
+			<param name="doctorId" expr="doctorId" />
+			<param name="date" expr="date" />
+			<param name="timeOfDayId" expr="timeOfDayId" />
+		</subdialog>
 	</form>
 </vxml>

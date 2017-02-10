@@ -8,39 +8,46 @@ import com.j256.ormlite.jdbc.JdbcConnectionSource;
 import com.j256.ormlite.support.ConnectionSource;
 import com.j256.ormlite.table.TableUtils;
 
-import pl.clinic.vxml.model.Doctor;
-import pl.clinic.vxml.model.Patient;
-import pl.clinic.vxml.model.TimeOfDay;
-import pl.clinic.vxml.model.Visit;
+import pl.clinic.vxml.model.impl.Doctor;
+import pl.clinic.vxml.model.impl.Patient;
+import pl.clinic.vxml.model.impl.TimeOfDay;
+import pl.clinic.vxml.model.impl.Visit;
 
 public class DaoUtils {
 	public static final String connection = "jdbc:sqlite:" + ProjectURL.getProjectURL("dialogowe.sqlite");
 
-	private Dao<Patient, Integer> patientDao;
-	private Dao<TimeOfDay, Integer> timeOfDayDao;
-	private Dao<Doctor, Integer> doctorDao;
-	private Dao<Visit, Integer> visitDao;
-	private static DaoUtils daoUtils;
+	private static Dao<Patient, Integer> patientDao;
+	private static Dao<TimeOfDay, Integer> timeOfDayDao;
+	private static Dao<Doctor, Integer> doctorDao;
+	private static Dao<Visit, Integer> visitDao;
 
-	private DaoUtils() throws SQLException {
-		patientDao = DaoManager.createDao(getsource(), Patient.class);
-		timeOfDayDao = DaoManager.createDao(getsource(), TimeOfDay.class);
-		doctorDao = DaoManager.createDao(getsource(), Doctor.class);
-		visitDao = DaoManager.createDao(getsource(), Visit.class);
+	static {
+		new DaoUtils();
 	}
 
-	ConnectionSource getsource() throws SQLException {
+	private DaoUtils() {
+		try {
+			patientDao = DaoManager.createDao(getsource(), Patient.class);
+			timeOfDayDao = DaoManager.createDao(getsource(), TimeOfDay.class);
+			doctorDao = DaoManager.createDao(getsource(), Doctor.class);
+			visitDao = DaoManager.createDao(getsource(), Visit.class);
+		} catch (SQLException e) {
+			e.printStackTrace();
+		}
+	}
+
+	public static ConnectionSource getsource() throws SQLException {
 		return new JdbcConnectionSource(connection);
 	}
 
-	public void createTableIfNotExists() throws SQLException {
+	public static void createTableIfNotExists() throws SQLException {
 		TableUtils.createTableIfNotExists(getsource(), Patient.class);
 		TableUtils.createTableIfNotExists(getsource(), TimeOfDay.class);
 		TableUtils.createTableIfNotExists(getsource(), Doctor.class);
 		TableUtils.createTableIfNotExists(getsource(), Visit.class);
 	}
 
-	public void createSampleData() throws SQLException {
+	public static void createSampleData() throws SQLException {
 		timeOfDayDao.create(new TimeOfDay(null, "morning"));
 		timeOfDayDao.create(new TimeOfDay(null, "afternoon"));
 
@@ -50,29 +57,23 @@ public class DaoUtils {
 		doctorDao.create(new Doctor(null, "Zielinski", "Mateusz"));
 		doctorDao.create(new Doctor(null, "Lewandowski", "Pawel"));
 
-		patientDao.create(new Patient(null, "Wysokinski", "Adam", 1, 10));
-		patientDao.create(new Patient(null, "Szymanowski", "Michal", 2, 11));
+		patientDao.create(new Patient(null, "Wysokinski", "Adam", 10));
+		patientDao.create(new Patient(null, "Szymanowski", "Michal", 11));
 	}
 
-	public static DaoUtils getDaoUtils() throws SQLException {
-		if (daoUtils == null)
-			daoUtils = new DaoUtils();
-		return daoUtils;
-	}
-
-	public Dao<Patient, Integer> getPatientDao() {
+	public static Dao<Patient, Integer> getPatientDao() {
 		return patientDao;
 	}
 
-	public Dao<TimeOfDay, Integer> getTimeOfDayDao() {
+	public static Dao<TimeOfDay, Integer> getTimeOfDayDao() {
 		return timeOfDayDao;
 	}
 
-	public Dao<Doctor, Integer> getDoctorDao() {
+	public static Dao<Doctor, Integer> getDoctorDao() {
 		return doctorDao;
 	}
 
-	public Dao<Visit, Integer> getVisitDao() {
+	public static Dao<Visit, Integer> getVisitDao() {
 		return visitDao;
 	}
 
