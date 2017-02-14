@@ -19,9 +19,7 @@ import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlSchemaType;
 import javax.xml.bind.annotation.XmlType;
 
-import pl.clinic.vxml.schema.IdentityVC;
-import pl.clinic.vxml.schema.NameVC;
-import pl.clinic.vxml.schema.VxmlChild;
+import pl.clinic.vxml.schema.abstractImpl.AbstractVC;
 
 /**
  * <p>
@@ -61,7 +59,7 @@ import pl.clinic.vxml.schema.VxmlChild;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = { "dataOrCatchOrHelp" })
 @XmlRootElement(name = "vxml")
-public class Vxml implements VxmlChild {
+public class Vxml extends AbstractVC {
 
 	@XmlElementRefs({
 			@XmlElementRef(name = "script", namespace = "http://www.w3.org/2001/vxml", type = Script.class, required = false),
@@ -210,27 +208,8 @@ public class Vxml implements VxmlChild {
 	}
 
 	@Override
-	public List<VxmlChild> getChildrens() {
-		List<VxmlChild> list = new ArrayList<VxmlChild>();
-		for (java.lang.Object object : getDataOrCatchOrHelp()) {
-			if (object instanceof JAXBElement) {
-				if (((JAXBElement) object).getValue() instanceof VxmlChild) {
-					list.add((VxmlChild) ((JAXBElement) object).getValue());
-				}
-			} else if (object instanceof VxmlChild) {
-			}
-		}
-		return list;
-	}
-
-	@Override
-	public NameVC getChildByName(String Name) {
-		return null;
-	}
-
-	@Override
-	public IdentityVC getChildByIdentity(String identity) {
-		return null;
+	public List<java.lang.Object> getObjectChildrens() {
+		return getDataOrCatchOrHelp();
 	}
 
 }

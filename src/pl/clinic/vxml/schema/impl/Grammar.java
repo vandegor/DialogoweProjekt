@@ -5,7 +5,6 @@
 // Generated on: 2017.02.05 at 03:42:58 PM CET 
 //
 
-
 package pl.clinic.vxml.schema.impl;
 
 import java.util.ArrayList;
@@ -21,13 +20,17 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import pl.clinic.vxml.schema.abstractImpl.AbstractVC;
 
 /**
  * grammar type with grammar content model and attributes
  * 
- * <p>Java class for grammar complex type.
+ * <p>
+ * Java class for grammar complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="grammar">
@@ -43,243 +46,223 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "grammar", propOrder = {
-    "lexiconOrMetaOrMetadata",
-    "rule"
-})
-public class Grammar {
+@XmlType(name = "grammar", propOrder = { "lexiconOrMetaOrMetadata", "rule" })
+public class Grammar extends AbstractVC {
 
-    @XmlElements({
-        @XmlElement(name = "lexicon", type = Lexicon.class),
-        @XmlElement(name = "meta", type = Meta.class),
-        @XmlElement(name = "metadata", type = Metadata.class),
-        @XmlElement(name = "tag", type = String.class)
-    })
-    protected List<java.lang.Object> lexiconOrMetaOrMetadata;
-    protected List<Rule> rule;
-    @XmlAttribute(name = "lang", namespace = "http://www.w3.org/XML/1998/namespace")
-    protected String lang;
-    @XmlAttribute(name = "base", namespace = "http://www.w3.org/XML/1998/namespace")
-    @XmlSchemaType(name = "anyURI")
-    protected String base;
-    @XmlAttribute(name = "tag-format")
-    protected String tagFormat;
-    @XmlAttribute(name = "mode")
-    protected ModeDatatype mode;
-    @XmlAttribute(name = "root")
-    @XmlIDREF
-    protected java.lang.Object root;
-    @XmlAttribute(name = "version")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String version;
+	@XmlElements({ @XmlElement(name = "lexicon", type = Lexicon.class), @XmlElement(name = "meta", type = Meta.class),
+			@XmlElement(name = "metadata", type = Metadata.class), @XmlElement(name = "tag", type = String.class) })
+	protected List<java.lang.Object> lexiconOrMetaOrMetadata;
+	protected List<Rule> rule;
+	@XmlAttribute(name = "lang", namespace = "http://www.w3.org/XML/1998/namespace")
+	protected String lang;
+	@XmlAttribute(name = "base", namespace = "http://www.w3.org/XML/1998/namespace")
+	@XmlSchemaType(name = "anyURI")
+	protected String base;
+	@XmlAttribute(name = "tag-format")
+	protected String tagFormat;
+	@XmlAttribute(name = "mode")
+	protected ModeDatatype mode;
+	@XmlAttribute(name = "root")
+	@XmlIDREF
+	protected java.lang.Object root;
+	@XmlAttribute(name = "version")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String version;
 
-    /**
-     * Gets the value of the lexiconOrMetaOrMetadata property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the lexiconOrMetaOrMetadata property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getLexiconOrMetaOrMetadata().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Lexicon }
-     * {@link Meta }
-     * {@link Metadata }
-     * {@link String }
-     * 
-     * 
-     */
-    public List<java.lang.Object> getLexiconOrMetaOrMetadata() {
-        if (lexiconOrMetaOrMetadata == null) {
-            lexiconOrMetaOrMetadata = new ArrayList<java.lang.Object>();
-        }
-        return this.lexiconOrMetaOrMetadata;
-    }
+	/**
+	 * Gets the value of the lexiconOrMetaOrMetadata property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the lexiconOrMetaOrMetadata property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getLexiconOrMetaOrMetadata().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Lexicon }
+	 * {@link Meta } {@link Metadata } {@link String }
+	 * 
+	 * 
+	 */
+	public List<java.lang.Object> getLexiconOrMetaOrMetadata() {
+		if (lexiconOrMetaOrMetadata == null) {
+			lexiconOrMetaOrMetadata = new ArrayList<java.lang.Object>();
+		}
+		return this.lexiconOrMetaOrMetadata;
+	}
 
-    /**
-     * Gets the value of the rule property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the rule property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getRule().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link Rule }
-     * 
-     * 
-     */
-    public List<Rule> getRule() {
-        if (rule == null) {
-            rule = new ArrayList<Rule>();
-        }
-        return this.rule;
-    }
+	/**
+	 * Gets the value of the rule property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the rule property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getRule().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link Rule }
+	 * 
+	 * 
+	 */
+	public List<Rule> getRule() {
+		if (rule == null) {
+			rule = new ArrayList<Rule>();
+		}
+		return this.rule;
+	}
 
-    /**
-     * Gets the value of the lang property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLang() {
-        return lang;
-    }
+	/**
+	 * Gets the value of the lang property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getLang() {
+		return lang;
+	}
 
-    /**
-     * Sets the value of the lang property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLang(String value) {
-        this.lang = value;
-    }
+	/**
+	 * Sets the value of the lang property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setLang(String value) {
+		this.lang = value;
+	}
 
-    /**
-     * Gets the value of the base property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getBase() {
-        return base;
-    }
+	/**
+	 * Gets the value of the base property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getBase() {
+		return base;
+	}
 
-    /**
-     * Sets the value of the base property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setBase(String value) {
-        this.base = value;
-    }
+	/**
+	 * Sets the value of the base property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setBase(String value) {
+		this.base = value;
+	}
 
-    /**
-     * Gets the value of the tagFormat property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTagFormat() {
-        return tagFormat;
-    }
+	/**
+	 * Gets the value of the tagFormat property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getTagFormat() {
+		return tagFormat;
+	}
 
-    /**
-     * Sets the value of the tagFormat property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTagFormat(String value) {
-        this.tagFormat = value;
-    }
+	/**
+	 * Sets the value of the tagFormat property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setTagFormat(String value) {
+		this.tagFormat = value;
+	}
 
-    /**
-     * Gets the value of the mode property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ModeDatatype }
-     *     
-     */
-    public ModeDatatype getMode() {
-        if (mode == null) {
-            return ModeDatatype.VOICE;
-        } else {
-            return mode;
-        }
-    }
+	/**
+	 * Gets the value of the mode property.
+	 * 
+	 * @return possible object is {@link ModeDatatype }
+	 * 
+	 */
+	public ModeDatatype getMode() {
+		if (mode == null) {
+			return ModeDatatype.VOICE;
+		} else {
+			return mode;
+		}
+	}
 
-    /**
-     * Sets the value of the mode property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ModeDatatype }
-     *     
-     */
-    public void setMode(ModeDatatype value) {
-        this.mode = value;
-    }
+	/**
+	 * Sets the value of the mode property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ModeDatatype }
+	 * 
+	 */
+	public void setMode(ModeDatatype value) {
+		this.mode = value;
+	}
 
-    /**
-     * Gets the value of the root property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link java.lang.Object }
-     *     
-     */
-    public java.lang.Object getRoot() {
-        return root;
-    }
+	/**
+	 * Gets the value of the root property.
+	 * 
+	 * @return possible object is {@link java.lang.Object }
+	 * 
+	 */
+	public java.lang.Object getRoot() {
+		return root;
+	}
 
-    /**
-     * Sets the value of the root property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link java.lang.Object }
-     *     
-     */
-    public void setRoot(java.lang.Object value) {
-        this.root = value;
-    }
+	/**
+	 * Sets the value of the root property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link java.lang.Object }
+	 * 
+	 */
+	public void setRoot(java.lang.Object value) {
+		this.root = value;
+	}
 
-    /**
-     * Gets the value of the version property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getVersion() {
-        return version;
-    }
+	/**
+	 * Gets the value of the version property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getVersion() {
+		return version;
+	}
 
-    /**
-     * Sets the value of the version property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setVersion(String value) {
-        this.version = value;
-    }
+	/**
+	 * Sets the value of the version property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setVersion(String value) {
+		this.version = value;
+	}
+
+	@Override
+	public List<java.lang.Object> getObjectChildrens() {
+		List<java.lang.Object> ol = new ArrayList<java.lang.Object>(getLexiconOrMetaOrMetadata());
+		ol.addAll(getRule());
+		return ol;
+	}
 
 }

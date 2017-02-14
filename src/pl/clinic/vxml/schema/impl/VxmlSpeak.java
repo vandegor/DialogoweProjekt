@@ -5,7 +5,6 @@
 // Generated on: 2017.02.05 at 03:42:58 PM CET 
 //
 
-
 package pl.clinic.vxml.schema.impl;
 
 import java.io.Serializable;
@@ -24,17 +23,20 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import pl.clinic.vxml.schema.abstractImpl.AbstractVC;
 
 /**
  * 
- *                This is similar to speak.class from SSML, but it allows
- *                the foreach element as a child of prompt, and also adds
- *                the prompt attributes from VXML.
- *            
+ * This is similar to speak.class from SSML, but it allows the foreach element
+ * as a child of prompt, and also adds the prompt attributes from VXML.
  * 
- * <p>Java class for vxml.speak complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * Java class for vxml.speak complex type.
+ * 
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="vxml.speak">
@@ -61,291 +63,271 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "vxml.speak", propOrder = {
-    "content"
-})
-public class VxmlSpeak {
+@XmlType(name = "vxml.speak", propOrder = { "content" })
+public class VxmlSpeak extends AbstractVC {
 
-    @XmlElementRefs({
-        @XmlElementRef(name = "struct", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "metadata", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "meta", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "lexicon", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "aws", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "foreach", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false)
-    })
-    @XmlMixed
-    protected List<Serializable> content;
-    @XmlAttribute(name = "version")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String version;
-    @XmlAttribute(name = "lang", namespace = "http://www.w3.org/XML/1998/namespace")
-    protected String lang;
-    @XmlAttribute(name = "base", namespace = "http://www.w3.org/XML/1998/namespace")
-    @XmlSchemaType(name = "anyURI")
-    protected String base;
-    @XmlAttribute(name = "bargein")
-    protected List<String> bargein;
-    @XmlAttribute(name = "bargeintype")
-    protected BargeintypeDatatype bargeintype;
-    @XmlAttribute(name = "timeout")
-    protected String timeout;
-    @XmlAttribute(name = "cond")
-    protected String cond;
-    @XmlAttribute(name = "count")
-    protected BigInteger count;
+	@XmlElementRefs({
+			@XmlElementRef(name = "struct", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "metadata", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "meta", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "lexicon", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "aws", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "foreach", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false) })
+	@XmlMixed
+	protected List<Serializable> content;
+	@XmlAttribute(name = "version")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String version;
+	@XmlAttribute(name = "lang", namespace = "http://www.w3.org/XML/1998/namespace")
+	protected String lang;
+	@XmlAttribute(name = "base", namespace = "http://www.w3.org/XML/1998/namespace")
+	@XmlSchemaType(name = "anyURI")
+	protected String base;
+	@XmlAttribute(name = "bargein")
+	protected List<String> bargein;
+	@XmlAttribute(name = "bargeintype")
+	protected BargeintypeDatatype bargeintype;
+	@XmlAttribute(name = "timeout")
+	protected String timeout;
+	@XmlAttribute(name = "cond")
+	protected String cond;
+	@XmlAttribute(name = "count")
+	protected BigInteger count;
 
-    /**
-     * 
-     *                This is similar to speak.class from SSML, but it allows
-     *                the foreach element as a child of prompt, and also adds
-     *                the prompt attributes from VXML.
-     *            Gets the value of the content property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the content property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getContent().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link Value }{@code >}
-     * {@link JAXBElement }{@code <}{@link java.lang.Object }{@code >}
-     * {@link JAXBElement }{@code <}{@link Voice }{@code >}
-     * {@link JAXBElement }{@code <}{@link SsmlMeta }{@code >}
-     * {@link String }
-     * {@link JAXBElement }{@code <}{@link Enumerate }{@code >}
-     * {@link JAXBElement }{@code <}{@link Mark }{@code >}
-     * {@link JAXBElement }{@code <}{@link Paragraph }{@code >}
-     * {@link JAXBElement }{@code <}{@link Audio }{@code >}
-     * {@link JAXBElement }{@code <}{@link Break }{@code >}
-     * {@link JAXBElement }{@code <}{@link ForeachInPromptType }{@code >}
-     * {@link JAXBElement }{@code <}{@link SsmlMetadata }{@code >}
-     * {@link JAXBElement }{@code <}{@link SayAs }{@code >}
-     * {@link JAXBElement }{@code <}{@link Sentence }{@code >}
-     * {@link JAXBElement }{@code <}{@link Emphasis }{@code >}
-     * {@link JAXBElement }{@code <}{@link Phoneme }{@code >}
-     * {@link JAXBElement }{@code <}{@link SsmlLexicon }{@code >}
-     * {@link JAXBElement }{@code <}{@link java.lang.Object }{@code >}
-     * {@link JAXBElement }{@code <}{@link Prosody }{@code >}
-     * {@link JAXBElement }{@code <}{@link Sub }{@code >}
-     * 
-     * 
-     */
-    public List<Serializable> getContent() {
-        if (content == null) {
-            content = new ArrayList<Serializable>();
-        }
-        return this.content;
-    }
+	/**
+	 * 
+	 * This is similar to speak.class from SSML, but it allows the foreach
+	 * element as a child of prompt, and also adds the prompt attributes from
+	 * VXML. Gets the value of the content property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the content property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getContent().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link JAXBElement }{@code <}{@link Value }{@code >} {@link JAXBElement
+	 * }{@code <}{@link java.lang.Object }{@code >} {@link JAXBElement
+	 * }{@code <}{@link Voice }{@code >} {@link JAXBElement
+	 * }{@code <}{@link SsmlMeta }{@code >} {@link String } {@link JAXBElement
+	 * }{@code <}{@link Enumerate }{@code >} {@link JAXBElement
+	 * }{@code <}{@link Mark }{@code >} {@link JAXBElement
+	 * }{@code <}{@link Paragraph }{@code >} {@link JAXBElement
+	 * }{@code <}{@link Audio }{@code >} {@link JAXBElement
+	 * }{@code <}{@link Break }{@code >} {@link JAXBElement
+	 * }{@code <}{@link ForeachInPromptType }{@code >} {@link JAXBElement
+	 * }{@code <}{@link SsmlMetadata }{@code >} {@link JAXBElement
+	 * }{@code <}{@link SayAs }{@code >} {@link JAXBElement
+	 * }{@code <}{@link Sentence }{@code >} {@link JAXBElement
+	 * }{@code <}{@link Emphasis }{@code >} {@link JAXBElement
+	 * }{@code <}{@link Phoneme }{@code >} {@link JAXBElement
+	 * }{@code <}{@link SsmlLexicon }{@code >} {@link JAXBElement
+	 * }{@code <}{@link java.lang.Object }{@code >} {@link JAXBElement
+	 * }{@code <}{@link Prosody }{@code >} {@link JAXBElement
+	 * }{@code <}{@link Sub }{@code >}
+	 * 
+	 * 
+	 */
+	public List<Serializable> getContent() {
+		if (content == null) {
+			content = new ArrayList<Serializable>();
+		}
+		return this.content;
+	}
 
-    /**
-     * Gets the value of the version property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getVersion() {
-        if (version == null) {
-            return "1.0";
-        } else {
-            return version;
-        }
-    }
+	/**
+	 * Gets the value of the version property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getVersion() {
+		if (version == null) {
+			return "1.0";
+		} else {
+			return version;
+		}
+	}
 
-    /**
-     * Sets the value of the version property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setVersion(String value) {
-        this.version = value;
-    }
+	/**
+	 * Sets the value of the version property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setVersion(String value) {
+		this.version = value;
+	}
 
-    /**
-     * Gets the value of the lang property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLang() {
-        return lang;
-    }
+	/**
+	 * Gets the value of the lang property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getLang() {
+		return lang;
+	}
 
-    /**
-     * Sets the value of the lang property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLang(String value) {
-        this.lang = value;
-    }
+	/**
+	 * Sets the value of the lang property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setLang(String value) {
+		this.lang = value;
+	}
 
-    /**
-     * Gets the value of the base property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getBase() {
-        return base;
-    }
+	/**
+	 * Gets the value of the base property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getBase() {
+		return base;
+	}
 
-    /**
-     * Sets the value of the base property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setBase(String value) {
-        this.base = value;
-    }
+	/**
+	 * Sets the value of the base property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setBase(String value) {
+		this.base = value;
+	}
 
-    /**
-     * Gets the value of the bargein property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the bargein property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getBargein().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link String }
-     * 
-     * 
-     */
-    public List<String> getBargein() {
-        if (bargein == null) {
-            bargein = new ArrayList<String>();
-        }
-        return this.bargein;
-    }
+	/**
+	 * Gets the value of the bargein property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the bargein property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getBargein().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list {@link String }
+	 * 
+	 * 
+	 */
+	public List<String> getBargein() {
+		if (bargein == null) {
+			bargein = new ArrayList<String>();
+		}
+		return this.bargein;
+	}
 
-    /**
-     * Gets the value of the bargeintype property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BargeintypeDatatype }
-     *     
-     */
-    public BargeintypeDatatype getBargeintype() {
-        return bargeintype;
-    }
+	/**
+	 * Gets the value of the bargeintype property.
+	 * 
+	 * @return possible object is {@link BargeintypeDatatype }
+	 * 
+	 */
+	public BargeintypeDatatype getBargeintype() {
+		return bargeintype;
+	}
 
-    /**
-     * Sets the value of the bargeintype property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BargeintypeDatatype }
-     *     
-     */
-    public void setBargeintype(BargeintypeDatatype value) {
-        this.bargeintype = value;
-    }
+	/**
+	 * Sets the value of the bargeintype property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BargeintypeDatatype }
+	 * 
+	 */
+	public void setBargeintype(BargeintypeDatatype value) {
+		this.bargeintype = value;
+	}
 
-    /**
-     * Gets the value of the timeout property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getTimeout() {
-        return timeout;
-    }
+	/**
+	 * Gets the value of the timeout property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getTimeout() {
+		return timeout;
+	}
 
-    /**
-     * Sets the value of the timeout property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setTimeout(String value) {
-        this.timeout = value;
-    }
+	/**
+	 * Sets the value of the timeout property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setTimeout(String value) {
+		this.timeout = value;
+	}
 
-    /**
-     * Gets the value of the cond property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCond() {
-        return cond;
-    }
+	/**
+	 * Gets the value of the cond property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getCond() {
+		return cond;
+	}
 
-    /**
-     * Sets the value of the cond property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCond(String value) {
-        this.cond = value;
-    }
+	/**
+	 * Sets the value of the cond property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setCond(String value) {
+		this.cond = value;
+	}
 
-    /**
-     * Gets the value of the count property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigInteger }
-     *     
-     */
-    public BigInteger getCount() {
-        return count;
-    }
+	/**
+	 * Gets the value of the count property.
+	 * 
+	 * @return possible object is {@link BigInteger }
+	 * 
+	 */
+	public BigInteger getCount() {
+		return count;
+	}
 
-    /**
-     * Sets the value of the count property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigInteger }
-     *     
-     */
-    public void setCount(BigInteger value) {
-        this.count = value;
-    }
+	/**
+	 * Sets the value of the count property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BigInteger }
+	 * 
+	 */
+	public void setCount(BigInteger value) {
+		this.count = value;
+	}
+
+	@Override
+	public List<java.lang.Object> getObjectChildrens() {
+		return new ArrayList<java.lang.Object>(getContent());
+	}
 
 }

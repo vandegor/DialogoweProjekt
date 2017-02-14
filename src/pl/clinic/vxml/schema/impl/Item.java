@@ -5,7 +5,6 @@
 // Generated on: 2017.02.05 at 03:42:58 PM CET 
 //
 
-
 package pl.clinic.vxml.schema.impl;
 
 import java.io.Serializable;
@@ -21,11 +20,15 @@ import javax.xml.bind.annotation.XmlElementRefs;
 import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlType;
 
+import pl.clinic.vxml.schema.abstractImpl.AbstractVC;
 
 /**
- * <p>Java class for item complex type.
+ * <p>
+ * Java class for item complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="item">
@@ -41,157 +44,147 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "item", propOrder = {
-    "content"
-})
-public class Item {
+@XmlType(name = "item", propOrder = { "content" })
+public class Item extends AbstractVC {
 
-    @XmlElementRefs({
-        @XmlElementRef(name = "ruleref", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "item", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "tag", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "token", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "one-of", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false)
-    })
-    @XmlMixed
-    protected List<Serializable> content;
-    @XmlAttribute(name = "lang", namespace = "http://www.w3.org/XML/1998/namespace")
-    protected String lang;
-    @XmlAttribute(name = "repeat")
-    protected String repeat;
-    @XmlAttribute(name = "repeat-prob")
-    protected BigDecimal repeatProb;
-    @XmlAttribute(name = "weight")
-    protected String weight;
+	@XmlElementRefs({
+			@XmlElementRef(name = "ruleref", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "item", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "tag", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "token", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "one-of", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false) })
+	@XmlMixed
+	protected List<Serializable> content;
+	@XmlAttribute(name = "lang", namespace = "http://www.w3.org/XML/1998/namespace")
+	protected String lang;
+	@XmlAttribute(name = "repeat")
+	protected String repeat;
+	@XmlAttribute(name = "repeat-prob")
+	protected BigDecimal repeatProb;
+	@XmlAttribute(name = "weight")
+	protected String weight;
 
-    /**
-     * Gets the value of the content property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the content property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getContent().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link Item }{@code >}
-     * {@link String }
-     * {@link JAXBElement }{@code <}{@link Ruleref }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link Token }{@code >}
-     * {@link JAXBElement }{@code <}{@link OneOf }{@code >}
-     * 
-     * 
-     */
-    public List<Serializable> getContent() {
-        if (content == null) {
-            content = new ArrayList<Serializable>();
-        }
-        return this.content;
-    }
+	/**
+	 * Gets the value of the content property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the content property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getContent().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link JAXBElement }{@code <}{@link Item }{@code >} {@link String }
+	 * {@link JAXBElement }{@code <}{@link Ruleref }{@code >} {@link JAXBElement
+	 * }{@code <}{@link String }{@code >} {@link JAXBElement
+	 * }{@code <}{@link Token }{@code >} {@link JAXBElement
+	 * }{@code <}{@link OneOf }{@code >}
+	 * 
+	 * 
+	 */
+	public List<Serializable> getContent() {
+		if (content == null) {
+			content = new ArrayList<Serializable>();
+		}
+		return this.content;
+	}
 
-    /**
-     * Gets the value of the lang property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getLang() {
-        return lang;
-    }
+	/**
+	 * Gets the value of the lang property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getLang() {
+		return lang;
+	}
 
-    /**
-     * Sets the value of the lang property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setLang(String value) {
-        this.lang = value;
-    }
+	/**
+	 * Sets the value of the lang property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setLang(String value) {
+		this.lang = value;
+	}
 
-    /**
-     * Gets the value of the repeat property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getRepeat() {
-        return repeat;
-    }
+	/**
+	 * Gets the value of the repeat property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getRepeat() {
+		return repeat;
+	}
 
-    /**
-     * Sets the value of the repeat property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setRepeat(String value) {
-        this.repeat = value;
-    }
+	/**
+	 * Sets the value of the repeat property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setRepeat(String value) {
+		this.repeat = value;
+	}
 
-    /**
-     * Gets the value of the repeatProb property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public BigDecimal getRepeatProb() {
-        return repeatProb;
-    }
+	/**
+	 * Gets the value of the repeatProb property.
+	 * 
+	 * @return possible object is {@link BigDecimal }
+	 * 
+	 */
+	public BigDecimal getRepeatProb() {
+		return repeatProb;
+	}
 
-    /**
-     * Sets the value of the repeatProb property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link BigDecimal }
-     *     
-     */
-    public void setRepeatProb(BigDecimal value) {
-        this.repeatProb = value;
-    }
+	/**
+	 * Sets the value of the repeatProb property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link BigDecimal }
+	 * 
+	 */
+	public void setRepeatProb(BigDecimal value) {
+		this.repeatProb = value;
+	}
 
-    /**
-     * Gets the value of the weight property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getWeight() {
-        return weight;
-    }
+	/**
+	 * Gets the value of the weight property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getWeight() {
+		return weight;
+	}
 
-    /**
-     * Sets the value of the weight property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setWeight(String value) {
-        this.weight = value;
-    }
+	/**
+	 * Sets the value of the weight property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setWeight(String value) {
+		this.weight = value;
+	}
+
+	@Override
+	public List<java.lang.Object> getObjectChildrens() {
+		return new ArrayList<java.lang.Object>(getContent());
+	}
 
 }

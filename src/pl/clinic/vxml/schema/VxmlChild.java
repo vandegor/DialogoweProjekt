@@ -4,10 +4,14 @@ import java.util.List;
 
 public interface VxmlChild {
 
-	public List<VxmlChild> getChildrens();
+	public List<VxmlChild> getVxmlChildrens();
 
-	public NameVC getChildByName(String Name);
+	public VxmlChild getChildByName(String Name);
 
-	public IdentityVC getChildByIdentity(String identity);
+	public VxmlChild getChildById(String identity);
+
+	public VxmlChild getChildByNameOrId(String value);
+
+	public List<Object> getObjectChildrens();
 
 }

@@ -5,7 +5,6 @@
 // Generated on: 2017.02.05 at 03:42:58 PM CET 
 //
 
-
 package pl.clinic.vxml.schema.impl;
 
 import java.io.Serializable;
@@ -23,11 +22,15 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import pl.clinic.vxml.schema.abstractImpl.AbstractIVC;
 
 /**
- * <p>Java class for rule complex type.
+ * <p>
+ * Java class for rule complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType name="rule">
@@ -46,113 +49,109 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "rule", propOrder = {
-    "content"
-})
-public class Rule {
+@XmlType(name = "rule", propOrder = { "content" })
+public class Rule extends AbstractIVC {
 
-    @XmlElementRefs({
-        @XmlElementRef(name = "tag", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "ruleref", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "one-of", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "token", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "example", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "item", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false)
-    })
-    @XmlMixed
-    protected List<Serializable> content;
-    @XmlAttribute(name = "scope")
-    protected ScopeDatatype scope;
-    @XmlAttribute(name = "id", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    @XmlID
-    protected String id;
+	@XmlElementRefs({
+			@XmlElementRef(name = "tag", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "ruleref", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "one-of", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "token", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "example", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "item", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false) })
+	@XmlMixed
+	protected List<Serializable> content;
+	@XmlAttribute(name = "scope")
+	protected ScopeDatatype scope;
+	@XmlAttribute(name = "id", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	@XmlID
+	protected String id;
 
-    /**
-     * Gets the value of the content property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the content property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getContent().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link Ruleref }{@code >}
-     * {@link JAXBElement }{@code <}{@link OneOf }{@code >}
-     * {@link String }
-     * {@link JAXBElement }{@code <}{@link Token }{@code >}
-     * {@link JAXBElement }{@code <}{@link String }{@code >}
-     * {@link JAXBElement }{@code <}{@link Item }{@code >}
-     * 
-     * 
-     */
-    public List<Serializable> getContent() {
-        if (content == null) {
-            content = new ArrayList<Serializable>();
-        }
-        return this.content;
-    }
+	/**
+	 * Gets the value of the content property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the content property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getContent().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link JAXBElement }{@code <}{@link String }{@code >} {@link JAXBElement
+	 * }{@code <}{@link Ruleref }{@code >} {@link JAXBElement
+	 * }{@code <}{@link OneOf }{@code >} {@link String } {@link JAXBElement
+	 * }{@code <}{@link Token }{@code >} {@link JAXBElement
+	 * }{@code <}{@link String }{@code >} {@link JAXBElement
+	 * }{@code <}{@link Item }{@code >}
+	 * 
+	 * 
+	 */
+	public List<Serializable> getContent() {
+		if (content == null) {
+			content = new ArrayList<Serializable>();
+		}
+		return this.content;
+	}
 
-    /**
-     * Gets the value of the scope property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link ScopeDatatype }
-     *     
-     */
-    public ScopeDatatype getScope() {
-        if (scope == null) {
-            return ScopeDatatype.PRIVATE;
-        } else {
-            return scope;
-        }
-    }
+	/**
+	 * Gets the value of the scope property.
+	 * 
+	 * @return possible object is {@link ScopeDatatype }
+	 * 
+	 */
+	public ScopeDatatype getScope() {
+		if (scope == null) {
+			return ScopeDatatype.PRIVATE;
+		} else {
+			return scope;
+		}
+	}
 
-    /**
-     * Sets the value of the scope property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link ScopeDatatype }
-     *     
-     */
-    public void setScope(ScopeDatatype value) {
-        this.scope = value;
-    }
+	/**
+	 * Sets the value of the scope property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link ScopeDatatype }
+	 * 
+	 */
+	public void setScope(ScopeDatatype value) {
+		this.scope = value;
+	}
 
-    /**
-     * Gets the value of the id property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getId() {
-        return id;
-    }
+	/**
+	 * Gets the value of the id property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getId() {
+		return id;
+	}
 
-    /**
-     * Sets the value of the id property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setId(String value) {
-        this.id = value;
-    }
+	/**
+	 * Sets the value of the id property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setId(String value) {
+		this.id = value;
+	}
+
+	@Override
+	public List<java.lang.Object> getObjectChildrens() {
+		return new ArrayList<java.lang.Object>(getContent());
+	}
 
 }

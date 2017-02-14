@@ -73,7 +73,6 @@
 			namelist="patientId">
 			<param name="patientId" expr="patientId" />
 		</subdialog>
-
 		<subdialog method="post" name="cancelSubdialog" cond="actionType == 'cancel'"
 			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/cancelVisit"
 			namelist="patientId">

@@ -22,6 +22,8 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import pl.clinic.vxml.schema.abstractImpl.AbstractNVC;
+
 /**
  * <p>
  * Java class for anonymous complex type.
@@ -58,7 +60,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "", propOrder = { "content" })
 @XmlRootElement(name = "field")
-public class Field {
+public class Field extends AbstractNVC {
 
 	@XmlElementRefs({
 			@XmlElementRef(name = "catch", namespace = "http://www.w3.org/2001/vxml", type = Catch.class, required = false),
@@ -264,6 +266,11 @@ public class Field {
 	 */
 	public void setExpr(String value) {
 		this.expr = value;
+	}
+
+	@Override
+	public List<java.lang.Object> getObjectChildrens() {
+		return getContent();
 	}
 
 }

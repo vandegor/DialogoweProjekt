@@ -34,7 +34,7 @@ public class ClinicRestImpl {
 
 	public Vxml main() throws MalformedURLException, JAXBException, SQLException {
 		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("main.xml")));
-		vxml.getChildrens();
+		vxml.getChildByNameOrId("patientPassword");
 		return vxml;
 	}
 
@@ -64,8 +64,7 @@ public class ClinicRestImpl {
 	public Response selectDoctor(Integer patientId) throws MalformedURLException, JAXBException, SQLException {
 
 		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("selectDoctor.xml")));
-		Form form = (Form) vxml.getDataOrCatchOrHelp().get(0);
-		Field field = (Field) form.getCatchOrHelpOrNoinput().get(0);
+		Field field = (Field) vxml.getChildByName("selectDoctor");
 
 		List<ModelInterface> surnames = new ArrayList<ModelInterface>(DaoUtils.getDoctorDao().queryForAll());
 		List<ModelInterface> surnamesWithDot = new ArrayList<ModelInterface>(DaoUtils.getDoctorDao().queryForAll());
@@ -79,8 +78,7 @@ public class ClinicRestImpl {
 	public Response selectTime(Integer patientId) throws MalformedURLException, JAXBException, SQLException {
 
 		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("selectTime.xml")));
-		Form form = (Form) vxml.getDataOrCatchOrHelp().get(0);
-		Field field = (Field) form.getCatchOrHelpOrNoinput().get(0);
+		Field field = (Field) vxml.getChildByName("selectTime");
 
 		List<ModelInterface> times = new ArrayList<ModelInterface>(DaoUtils.getTimeOfDayDao().queryForAll());
 		List<ModelInterface> timesWithDot = new ArrayList<ModelInterface>(DaoUtils.getTimeOfDayDao().queryForAll());
@@ -124,10 +122,10 @@ public class ClinicRestImpl {
 	public Response checkPass(Integer patientId, Integer patientPassword)
 			throws MalformedURLException, JAXBException, SQLException {
 		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("checkAuth.xml")));
-		Form form = (Form) vxml.getDataOrCatchOrHelp().get(0);
-		Var response = (Var) form.getCatchOrHelpOrNoinput().get(0);
-		Var name = (Var) form.getCatchOrHelpOrNoinput().get(1);
-		Var surname = (Var) form.getCatchOrHelpOrNoinput().get(2);
+		
+		Var response = (Var) vxml.getChildByNameOrId("response");
+		Var name = (Var) vxml.getChildByName("name");
+		Var surname = (Var) vxml.getChildByName("surname");
 
 		Patient patient = DaoUtils.getPatientDao().queryForId(patientId);
 		if (patient != null) {

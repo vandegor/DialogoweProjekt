@@ -5,8 +5,10 @@
 // Generated on: 2017.02.05 at 03:42:58 PM CET 
 //
 
-
 package pl.clinic.vxml.schema.impl;
+
+import java.util.Collections;
+import java.util.List;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
@@ -16,11 +18,15 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import pl.clinic.vxml.schema.abstractImpl.AbstractNVC;
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -38,60 +44,60 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 @XmlAccessorType(XmlAccessType.FIELD)
 @XmlType(name = "")
 @XmlRootElement(name = "var")
-public class Var {
+public class Var extends AbstractNVC {
 
-    @XmlAttribute(name = "name", required = true)
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String name;
-    @XmlAttribute(name = "expr")
-    protected String expr;
+	@XmlAttribute(name = "name", required = true)
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String name;
+	@XmlAttribute(name = "expr")
+	protected String expr;
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
 
-    /**
-     * Gets the value of the expr property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getExpr() {
-        return expr;
-    }
+	/**
+	 * Gets the value of the expr property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getExpr() {
+		return expr;
+	}
 
-    /**
-     * Sets the value of the expr property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setExpr(String value) {
-        this.expr = value;
-    }
+	/**
+	 * Sets the value of the expr property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setExpr(String value) {
+		this.expr = value;
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<java.lang.Object> getObjectChildrens() {
+		return Collections.EMPTY_LIST;
+	}
 
 }

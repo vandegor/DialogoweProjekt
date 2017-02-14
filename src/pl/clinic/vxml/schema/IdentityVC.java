@@ -2,5 +2,7 @@ package pl.clinic.vxml.schema;
 
 public interface IdentityVC extends VxmlChild {
 
-	public String getIdentity();
+	public String getId();
+	
+	public boolean isIdEquals(String id);
 }

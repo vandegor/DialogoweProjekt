@@ -5,7 +5,6 @@
 // Generated on: 2017.02.05 at 03:42:58 PM CET 
 //
 
-
 package pl.clinic.vxml.schema.impl;
 
 import java.util.ArrayList;
@@ -22,11 +21,15 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import pl.clinic.vxml.schema.abstractImpl.AbstractNVC;
 
 /**
- * <p>Java class for anonymous complex type.
+ * <p>
+ * Java class for anonymous complex type.
  * 
- * <p>The following schema fragment specifies the expected content contained within this class.
+ * <p>
+ * The following schema fragment specifies the expected content contained within
+ * this class.
  * 
  * <pre>
  * &lt;complexType>
@@ -42,161 +45,143 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "", propOrder = {
-    "content"
-})
+@XmlType(name = "", propOrder = { "content" })
 @XmlRootElement(name = "block")
-public class Block {
+public class Block extends AbstractNVC {
 
-    @XmlElementRefs({
-        @XmlElementRef(name = "value", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "script", namespace = "http://www.w3.org/2001/vxml", type = Script.class, required = false),
-        @XmlElementRef(name = "disconnect", namespace = "http://www.w3.org/2001/vxml", type = Disconnect.class, required = false),
-        @XmlElementRef(name = "if", namespace = "http://www.w3.org/2001/vxml", type = If.class, required = false),
-        @XmlElementRef(name = "log", namespace = "http://www.w3.org/2001/vxml", type = Log.class, required = false),
-        @XmlElementRef(name = "assign", namespace = "http://www.w3.org/2001/vxml", type = Assign.class, required = false),
-        @XmlElementRef(name = "enumerate", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "goto", namespace = "http://www.w3.org/2001/vxml", type = Goto.class, required = false),
-        @XmlElementRef(name = "submit", namespace = "http://www.w3.org/2001/vxml", type = Submit.class, required = false),
-        @XmlElementRef(name = "audio", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "foreach", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "return", namespace = "http://www.w3.org/2001/vxml", type = Return.class, required = false),
-        @XmlElementRef(name = "throw", namespace = "http://www.w3.org/2001/vxml", type = Throw.class, required = false),
-        @XmlElementRef(name = "clear", namespace = "http://www.w3.org/2001/vxml", type = Clear.class, required = false),
-        @XmlElementRef(name = "reprompt", namespace = "http://www.w3.org/2001/vxml", type = Reprompt.class, required = false),
-        @XmlElementRef(name = "prompt", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
-        @XmlElementRef(name = "var", namespace = "http://www.w3.org/2001/vxml", type = Var.class, required = false),
-        @XmlElementRef(name = "exit", namespace = "http://www.w3.org/2001/vxml", type = Exit.class, required = false),
-        @XmlElementRef(name = "data", namespace = "http://www.w3.org/2001/vxml", type = Data.class, required = false)
-    })
-    @XmlMixed
-    protected List<java.lang.Object> content;
-    @XmlAttribute(name = "cond")
-    protected String cond;
-    @XmlAttribute(name = "expr")
-    protected String expr;
-    @XmlAttribute(name = "name")
-    @XmlJavaTypeAdapter(CollapsedStringAdapter.class)
-    protected String name;
+	@XmlElementRefs({
+			@XmlElementRef(name = "value", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "script", namespace = "http://www.w3.org/2001/vxml", type = Script.class, required = false),
+			@XmlElementRef(name = "disconnect", namespace = "http://www.w3.org/2001/vxml", type = Disconnect.class, required = false),
+			@XmlElementRef(name = "if", namespace = "http://www.w3.org/2001/vxml", type = If.class, required = false),
+			@XmlElementRef(name = "log", namespace = "http://www.w3.org/2001/vxml", type = Log.class, required = false),
+			@XmlElementRef(name = "assign", namespace = "http://www.w3.org/2001/vxml", type = Assign.class, required = false),
+			@XmlElementRef(name = "enumerate", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "goto", namespace = "http://www.w3.org/2001/vxml", type = Goto.class, required = false),
+			@XmlElementRef(name = "submit", namespace = "http://www.w3.org/2001/vxml", type = Submit.class, required = false),
+			@XmlElementRef(name = "audio", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "foreach", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "return", namespace = "http://www.w3.org/2001/vxml", type = Return.class, required = false),
+			@XmlElementRef(name = "throw", namespace = "http://www.w3.org/2001/vxml", type = Throw.class, required = false),
+			@XmlElementRef(name = "clear", namespace = "http://www.w3.org/2001/vxml", type = Clear.class, required = false),
+			@XmlElementRef(name = "reprompt", namespace = "http://www.w3.org/2001/vxml", type = Reprompt.class, required = false),
+			@XmlElementRef(name = "prompt", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
+			@XmlElementRef(name = "var", namespace = "http://www.w3.org/2001/vxml", type = Var.class, required = false),
+			@XmlElementRef(name = "exit", namespace = "http://www.w3.org/2001/vxml", type = Exit.class, required = false),
+			@XmlElementRef(name = "data", namespace = "http://www.w3.org/2001/vxml", type = Data.class, required = false) })
+	@XmlMixed
+	protected List<java.lang.Object> content;
+	@XmlAttribute(name = "cond")
+	protected String cond;
+	@XmlAttribute(name = "expr")
+	protected String expr;
+	@XmlAttribute(name = "name")
+	@XmlJavaTypeAdapter(CollapsedStringAdapter.class)
+	protected String name;
 
-    /**
-     * Gets the value of the content property.
-     * 
-     * <p>
-     * This accessor method returns a reference to the live list,
-     * not a snapshot. Therefore any modification you make to the
-     * returned list will be present inside the JAXB object.
-     * This is why there is not a <CODE>set</CODE> method for the content property.
-     * 
-     * <p>
-     * For example, to add a new item, do as follows:
-     * <pre>
-     *    getContent().add(newItem);
-     * </pre>
-     * 
-     * 
-     * <p>
-     * Objects of the following type(s) are allowed in the list
-     * {@link JAXBElement }{@code <}{@link Value }{@code >}
-     * {@link Script }
-     * {@link Disconnect }
-     * {@link If }
-     * {@link Log }
-     * {@link Assign }
-     * {@link String }
-     * {@link JAXBElement }{@code <}{@link Enumerate }{@code >}
-     * {@link Goto }
-     * {@link Submit }
-     * {@link JAXBElement }{@code <}{@link Audio }{@code >}
-     * {@link JAXBElement }{@code <}{@link ForeachNotInPromptType }{@code >}
-     * {@link Return }
-     * {@link Throw }
-     * {@link Clear }
-     * {@link Reprompt }
-     * {@link JAXBElement }{@code <}{@link VxmlSpeak }{@code >}
-     * {@link Var }
-     * {@link Exit }
-     * {@link Data }
-     * 
-     * 
-     */
-    public List<java.lang.Object> getContent() {
-        if (content == null) {
-            content = new ArrayList<java.lang.Object>();
-        }
-        return this.content;
-    }
+	/**
+	 * Gets the value of the content property.
+	 * 
+	 * <p>
+	 * This accessor method returns a reference to the live list, not a
+	 * snapshot. Therefore any modification you make to the returned list will
+	 * be present inside the JAXB object. This is why there is not a
+	 * <CODE>set</CODE> method for the content property.
+	 * 
+	 * <p>
+	 * For example, to add a new item, do as follows:
+	 * 
+	 * <pre>
+	 * getContent().add(newItem);
+	 * </pre>
+	 * 
+	 * 
+	 * <p>
+	 * Objects of the following type(s) are allowed in the list
+	 * {@link JAXBElement }{@code <}{@link Value }{@code >} {@link Script }
+	 * {@link Disconnect } {@link If } {@link Log } {@link Assign }
+	 * {@link String } {@link JAXBElement }{@code <}{@link Enumerate }{@code >}
+	 * {@link Goto } {@link Submit } {@link JAXBElement }{@code <}{@link Audio
+	 * }{@code >} {@link JAXBElement }{@code <}{@link ForeachNotInPromptType
+	 * }{@code >} {@link Return } {@link Throw } {@link Clear } {@link Reprompt
+	 * } {@link JAXBElement }{@code <}{@link VxmlSpeak }{@code >} {@link Var }
+	 * {@link Exit } {@link Data }
+	 * 
+	 * 
+	 */
+	public List<java.lang.Object> getContent() {
+		if (content == null) {
+			content = new ArrayList<java.lang.Object>();
+		}
+		return this.content;
+	}
 
-    /**
-     * Gets the value of the cond property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getCond() {
-        return cond;
-    }
+	/**
+	 * Gets the value of the cond property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getCond() {
+		return cond;
+	}
 
-    /**
-     * Sets the value of the cond property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setCond(String value) {
-        this.cond = value;
-    }
+	/**
+	 * Sets the value of the cond property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setCond(String value) {
+		this.cond = value;
+	}
 
-    /**
-     * Gets the value of the expr property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getExpr() {
-        return expr;
-    }
+	/**
+	 * Gets the value of the expr property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getExpr() {
+		return expr;
+	}
 
-    /**
-     * Sets the value of the expr property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setExpr(String value) {
-        this.expr = value;
-    }
+	/**
+	 * Sets the value of the expr property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setExpr(String value) {
+		this.expr = value;
+	}
 
-    /**
-     * Gets the value of the name property.
-     * 
-     * @return
-     *     possible object is
-     *     {@link String }
-     *     
-     */
-    public String getName() {
-        return name;
-    }
+	/**
+	 * Gets the value of the name property.
+	 * 
+	 * @return possible object is {@link String }
+	 * 
+	 */
+	public String getName() {
+		return name;
+	}
 
-    /**
-     * Sets the value of the name property.
-     * 
-     * @param value
-     *     allowed object is
-     *     {@link String }
-     *     
-     */
-    public void setName(String value) {
-        this.name = value;
-    }
+	/**
+	 * Sets the value of the name property.
+	 * 
+	 * @param value
+	 *            allowed object is {@link String }
+	 * 
+	 */
+	public void setName(String value) {
+		this.name = value;
+	}
+
+	@Override
+	public List<java.lang.Object> getObjectChildrens() {
+		return getContent();
+	}
 
 }
