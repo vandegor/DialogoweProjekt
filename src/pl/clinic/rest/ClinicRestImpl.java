@@ -34,6 +34,7 @@ public class ClinicRestImpl {
 
 	public Vxml main() throws MalformedURLException, JAXBException, SQLException {
 		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("main.xml")));
+		vxml.getChildrens();
 		return vxml;
 	}
 
