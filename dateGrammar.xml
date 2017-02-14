@@ -1,0 +1,239 @@
+<?xml version= "1.0" encoding="UTF-8" ?>
+
+<grammar xml:lang="en-US">
+
+  <rule id="DATE" scope="public">
+    <one-of>
+      <item>
+        <ruleref uri="#DAY"/>
+      </item>
+      <item>
+        <ruleref uri="#MONTH"/>
+      </item>
+      <item>
+        <ruleref uri="#YEAR"/>
+      </item>
+      <item>
+        <item><ruleref uri="#DAY"/><tag>out.day=rules.DAY.day;</tag></item>
+        <item><ruleref uri="#MONTH"/><tag>out.month=rules.MONTH.month</tag></item>
+      </item>
+      <item>
+        <item><ruleref uri="#DAY"/><tag>out.day=rules.DAY.day;</tag></item>
+        <item><ruleref uri="#YEAR"/><tag>out.year=rules.YEAR.year</tag></item>
+      </item>
+      <item>
+        <item><ruleref uri="#MONTH"/><tag>out.month=rules.MONTH.month</tag></item>
+        <item><ruleref uri="#YEAR"/><tag>out.year=rules.YEAR.year</tag></item>
+      </item>
+      <item>
+        <item><ruleref uri="#MONTH"/><tag>out.month=rules.MONTH.month</tag></item>
+        <item><ruleref uri="#DAY"/><tag>out.day=rules.DAY.day;</tag></item>
+      </item>
+      <item>
+        <item><ruleref uri="#YEAR"/><tag>out.year=rules.YEAR.year</tag></item>
+        <item><ruleref uri="#DAY"/><tag>out.day=rules.DAY.day;</tag></item>
+      </item>
+      <item>
+        <item><ruleref uri="#YEAR"/><tag>out.year=rules.YEAR.year</tag></item>
+        <item><ruleref uri="#MONTH"/><tag>out.month=rules.MONTH.month</tag></item>
+      </item>
+      <item>
+        <item><ruleref uri="#DAY"/><tag>out.day=rules.DAY.day;</tag></item>
+        <item><ruleref uri="#MONTH"/><tag>out.month=rules.MONTH.month</tag></item>
+        <item><ruleref uri="#YEAR"/><tag>out.year=rules.YEAR.year</tag></item>
+      </item>
+      <item>
+        <item><ruleref uri="#DAY"/><tag>out.day=rules.DAY.day;</tag></item>
+        <item><ruleref uri="#YEAR"/><tag>out.year=rules.YEAR.year</tag></item>
+        <item><ruleref uri="#MONTH"/><tag>out.month=rules.MONTH.month</tag></item>
+      </item>
+      <item>
+        <item><ruleref uri="#MONTH"/><tag>out.month=rules.MONTH.month</tag></item>
+        <item><ruleref uri="#DAY"/><tag>out.day=rules.DAY.day;</tag></item>
+        <item><ruleref uri="#YEAR"/><tag>out.year=rules.YEAR.year</tag></item>
+      </item>
+      <item>
+        <item><ruleref uri="#MONTH"/><tag>out.month=rules.MONTH.month</tag></item>
+        <item><ruleref uri="#YEAR"/><tag>out.year=rules.YEAR.year</tag></item>
+        <item><ruleref uri="#DAY"/><tag>out.day=rules.DAY.day;</tag></item>
+      </item>
+      <item>
+        <item><ruleref uri="#YEAR"/><tag>out.year=rules.YEAR.year</tag></item>
+        <item><ruleref uri="#DAY"/><tag>out.day=rules.DAY.day;</tag></item>
+        <item><ruleref uri="#MONTH"/><tag>out.month=rules.MONTH.month</tag></item>
+      </item>
+      <item>
+        <item><ruleref uri="#YEAR"/><tag>out.year=rules.YEAR.year</tag></item>
+        <item><ruleref uri="#MONTH"/><tag>out.month=rules.MONTH.month</tag></item>
+        <item><ruleref uri="#DAY"/><tag>out.day=rules.DAY.day;</tag></item>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="DAY" scope="public">
+    <one-of>
+      <item>
+        <item repeat="0-1">
+          <ruleref uri="#FILL_DAY_BEFORE"/>
+        </item>
+        <one-of>
+          <item> first <tag> out.day = "1"; </tag></item>
+		  <item> one <tag> out.day = "1"; </tag></item>
+          <item> second <tag> out.day = "2"; </tag></item>
+		  <item> two <tag> out.day = "2"; </tag></item>
+          <item> third <tag> out.day = "3";  </tag></item>
+		  <item> three <tag> out.day = "3";  </tag></item>
+		  <item> fourth <tag> out.day = "4"; </tag></item>
+		  <item> four <tag> out.day = "4"; </tag></item>
+          <item> fifth <tag> out.day = "5"; </tag></item>
+		  <item> five <tag> out.day = "5"; </tag></item>
+          <item> sixth <tag> out.day = "6";  </tag></item>
+		  <item> six <tag> out.day = "6";  </tag></item>
+		  <item> seventh <tag> out.day = "7"; </tag></item>
+		  <item> seven <tag> out.day = "7"; </tag></item>
+          <item> eighth <tag> out.day = "8"; </tag></item>
+		  <item> eight <tag> out.day = "8"; </tag></item>
+          <item> ninth <tag> out.day = "9";  </tag></item>
+		  <item> nine <tag> out.day = "9";  </tag></item>
+		  <item> tenth <tag> out.day = "10"; </tag></item>
+		  <item> ten <tag> out.day = "10"; </tag></item>
+          <item> eleventh <tag> out.day = "11"; </tag></item>
+		  <item> eleven <tag> out.day = "11"; </tag></item>
+          <item> twelfth <tag> out.day = "12";  </tag></item>
+		  <item> twelve <tag> out.day = "12";  </tag></item>
+		  <item> thirteenth <tag> out.day = "13"; </tag></item>
+		  <item> thirteen <tag> out.day = "13"; </tag></item>
+          <item> fourteenth <tag> out.day = "14"; </tag></item>
+		  <item> fourteen <tag> out.day = "14"; </tag></item>
+          <item> fifteenth <tag> out.day = "15";  </tag></item>
+		  <item> fifteen <tag> out.day = "15";  </tag></item>
+		  <item> sixteenth <tag> out.day = "16"; </tag></item>
+		  <item> sixteen <tag> out.day = "16"; </tag></item>
+          <item> seventeenth <tag> out.day = "17"; </tag></item>
+		  <item> seventeen <tag> out.day = "17"; </tag></item>
+          <item> eighteenth <tag> out.day = "18";  </tag></item>
+		  <item> eighteen <tag> out.day = "18";  </tag></item>
+		  <item> nineteenth <tag> out.day = "19"; </tag></item>
+		  <item> nineteen <tag> out.day = "19"; </tag></item>
+          <item> twentieth <tag> out.day = "20"; </tag></item>
+		  <item> twenty <tag> out.day = "20"; </tag></item>
+          <item> twenty-first <tag> out.day = "21";  </tag></item>
+		  <item> twenty-one <tag> out.day = "21";  </tag></item>
+		  <item> twenty-second <tag> out.day = "22"; </tag></item>
+		  <item> twenty-two <tag> out.day = "22"; </tag></item>
+          <item> twenty-third <tag> out.day = "23"; </tag></item>
+		  <item> twenty-three <tag> out.day = "23"; </tag></item>
+          <item> twenty-fourth <tag> out.day = "24";  </tag></item>
+		  <item> twenty-four <tag> out.day = "24";  </tag></item>
+		  <item> twenty-fifth <tag> out.day = "25"; </tag></item>
+		  <item> twenty-five <tag> out.day = "25"; </tag></item>
+          <item> twenty-sixth <tag> out.day = "26"; </tag></item>
+		  <item> twenty-six <tag> out.day = "26"; </tag></item>
+          <item> twenty-seventh <tag> out.day = "27";  </tag></item>
+		  <item> twenty-seven <tag> out.day = "27";  </tag></item>
+		  <item> twenty-eighth <tag> out.day = "28"; </tag></item>
+		  <item> twenty-eight <tag> out.day = "28"; </tag></item>
+          <item> twenty-ninth <tag> out.day = "29"; </tag></item>
+		  <item> twenty-nine <tag> out.day = "29"; </tag></item>
+          <item> thirtieth <tag> out.day = "30";  </tag></item>
+		  <item> thirty <tag> out.day = "30";  </tag></item>
+		  <item> thirty-first <tag> out.day = "31";  </tag></item>
+		  <item> thirty-one <tag> out.day = "31";  </tag></item>
+        </one-of>
+        <item repeat="0-1">
+          <ruleref uri="#FILL_DAY_AFTER"/>
+        </item>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="MONTH" scope="public">
+    <one-of>
+      <item>
+        <item repeat="0-1">
+          <ruleref uri="#FILL_MONTH_BEFORE"/>
+        </item>
+        <one-of>
+          <item> january <tag> out.month = "january";    </tag></item>
+          <item> february <tag> out.month = "february";      </tag></item>
+		  <item> march <tag> out.month = "march";      </tag></item>
+		  <item> april <tag> out.month = "april";    </tag></item>
+          <item> may <tag> out.month = "may";      </tag></item>
+		  <item> june <tag> out.month = "june";      </tag></item>
+		  <item> july <tag> out.month = "july";    </tag></item>
+          <item> august <tag> out.month = "august";      </tag></item>
+		  <item> september <tag> out.month = "september";  </tag></item>
+		  <item> october <tag> out.month = "october";    </tag></item>
+          <item> november <tag> out.month = "november";  </tag></item>
+		  <item> december <tag> out.month = "december";  </tag></item>
+        </one-of>
+        <item repeat="0-1">
+          <ruleref uri="#FILL_MONTH_AFTER"/>
+        </item>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="YEAR" scope="public">
+    <one-of>
+      <item>
+        <item repeat="0-1">
+          <ruleref uri="#FILL_YEAR_BEFORE"/>
+        </item>
+        <one-of>
+          <item> 2017 <tag> out.year = "2017";</tag></item>
+          <item> 2018 <tag> out.year = "2018";</tag></item>
+        </one-of>
+        <item repeat="0-1">
+          <ruleref uri="#FILL_YEAR_AFTER"/>
+        </item>
+      </item>
+    </one-of>
+  </rule>
+
+  <rule id="FILL_DAY_BEFORE" scope="public">
+    <one-of>
+      <item> it will be </item>
+      <item> i want </item>
+      <item> day </item>
+      <item repeat="0-1"> and </item>
+    </one-of>
+  </rule>
+  
+   <rule id="FILL_DAY_AFTER" scope="public">
+    <one-of>
+      <item> and month </item>
+      <item repeat="0-1"> and </item>
+    </one-of>
+  </rule>
+
+
+  <rule id="FILL_MONTH_BEFORE" scope="public">
+    <one-of>
+      <item> month</item>
+      <item repeat="0-1"> and </item>
+    </one-of>
+  </rule>
+
+    <rule id="FILL_MONTH_AFTER" scope="public">
+    <one-of>
+      <item> and year</item>
+      <item repeat="0-1"> and </item>
+    </one-of>
+  </rule>
+
+  <rule id="FILL_YEAR_BEFORE" scope="public">
+    <one-of>
+      <item> year </item>
+      <item> and year will be</item>
+      <item repeat="0-1"> and </item>
+    </one-of>
+  </rule>
+
+  <rule id="FILL_YEAR_AFTER" scope="public">
+    <one-of>
+      <item> year </item>
+    </one-of>
+  </rule>
+
+</grammar>
