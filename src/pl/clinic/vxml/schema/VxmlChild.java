@@ -1,9 +1,13 @@
 package pl.clinic.vxml.schema;
 
-import javax.xml.bind.JAXBElement;
+import java.util.List;
 
-public class VxmlChild<T extends JAXBElement<T>> {
-	
-	
+public interface VxmlChild {
+
+	public List<VxmlChild> getChildrens();
+
+	public NameVC getChildByName(String Name);
+
+	public IdentityVC getChildByIdentity(String identity);
 
 }

@@ -10,7 +10,7 @@ public class UnmarshallerUtils {
 	private static UnmarshallerUtils UnmarshallerUtils;
 
 	public UnmarshallerUtils() throws JAXBException {
-		unmarshaller = JAXBContext.newInstance("pl.model.java.vxml").createUnmarshaller();
+		unmarshaller = JAXBContext.newInstance("pl.clinic.vxml.schema.impl").createUnmarshaller();
 	}
 
 	public static Unmarshaller getUnmarshaller() {
