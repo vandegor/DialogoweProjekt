@@ -14,8 +14,6 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBException;
 
-import pl.clinic.vxml.schema.impl.Vxml;
-
 @Path("/clinicRest")
 public class ClinicRest {
 	ClinicRestImpl clinicRestImpl;
@@ -27,7 +25,7 @@ public class ClinicRest {
 	@GET
 	@Produces(MediaType.TEXT_XML)
 	@Path("/main")
-	public Vxml main() throws MalformedURLException, JAXBException, SQLException {
+	public Response main() throws MalformedURLException, JAXBException, SQLException {
 		return clinicRestImpl.main();
 	}
 
@@ -125,7 +123,7 @@ public class ClinicRest {
 	@GET
 	@Path("/dateGrammar")
 	@Produces(MediaType.TEXT_XML)
-	public String dateGrammar() throws MalformedURLException, JAXBException, SQLException {
+	public Response dateGrammar() throws MalformedURLException, JAXBException, SQLException {
 		return clinicRestImpl.dateGrammar();
 	}
 

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml xmlns="http://www.w3.org/2001/vxml" version="2.1">
 	<form>
-    <grammar src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/dateGrammar.xml#DATE" type="application/grammar-xml"/>
+    <grammar src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/dateGrammar#DATE" type="application/grammar-xml"/>
 
         <initial name="beginner">
             <prompt>
@@ -16,15 +16,15 @@
         </initial>
         <field name="day">
             <prompt>Please enter day</prompt>
-            <grammar src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/dateGrammar.xml#DAY" type="application/grammar-xml"/>
+            <grammar src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/dateGrammar#DAY" type="application/grammar-xml"/>
         </field>
         <field name="month">
             <prompt>Please enter month</prompt>
-            <grammar src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/dateGrammar.xml#MONTH" type="application/grammar-xml"/>
+            <grammar src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/dateGrammar#MONTH" type="application/grammar-xml"/>
         </field>
         <field name="year">
             <prompt>Please enter year</prompt>
-            <grammar src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/dateGrammar.xml#YEAR" type="application/grammar-xml"/>
+            <grammar src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/dateGrammar#YEAR" type="application/grammar-xml"/>
         </field>
         <filled namelist="day month year">
             <prompt>

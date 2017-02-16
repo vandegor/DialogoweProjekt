@@ -1,20 +1,17 @@
 package pl.clinic.rest;
 
 import java.io.File;
-import java.io.IOException;
 import java.net.MalformedURLException;
-import java.nio.file.Files;
-import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-import java.util.Scanner;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
@@ -27,6 +24,7 @@ import pl.clinic.model.utils.DaoUtils;
 import pl.clinic.model.utils.ProjectURL;
 import pl.clinic.vxml.schema.impl.Field;
 import pl.clinic.vxml.schema.impl.Form;
+import pl.clinic.vxml.schema.impl.Grammar;
 import pl.clinic.vxml.schema.impl.Var;
 import pl.clinic.vxml.schema.impl.Vxml;
 import pl.clinic.vxml.schema.utils.UnmarshallerUtils;
@@ -36,22 +34,24 @@ public class ClinicRestImpl {
 
 	private static Unmarshaller unmarshaller = UnmarshallerUtils.getUnmarshaller();
 
-	public Vxml main() throws MalformedURLException, JAXBException, SQLException {
+	public Response main() throws MalformedURLException, JAXBException, SQLException {
 		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("main.xml")));
 		vxml.getChildByNameOrId("patientPassword");
-		return vxml;
+		return Response.ok(vxml, MediaType.TEXT_XML).build();
 	}
 
-	public Response insertVisit(Integer patientId, Integer doctorId, String day, String month, String year, Integer timeOfDayId)
-			throws MalformedURLException, JAXBException, SQLException, ParseException {
+	public Response insertVisit(Integer patientId, Integer doctorId, String day, String month, String year,
+			Integer timeOfDayId) throws MalformedURLException, JAXBException, SQLException, ParseException {
 		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("insertVisit.xml")));
-		Form form = (Form) vxml.getDataOrCatchOrHelp().get(0);
-		Var insertVisit = (Var) form.getCatchOrHelpOrNoinput().get(0);
+		Var insertVisit = (Var) vxml.getChildByName("insertVisit");
+
 		Patient patient = DaoUtils.getPatientDao().queryForId(patientId);
 		Doctor doctor = DaoUtils.getDoctorDao().queryForId(doctorId);
-		Date visitDate = new SimpleDateFormat("yyyyMMdd").parse(year+month+day);
+		Date visitDate = new SimpleDateFormat("yyyyMMdd").parse(year + month + day);
 		TimeOfDay timeOfDay = DaoUtils.getTimeOfDayDao().queryForId(timeOfDayId);
+
 		Visit visit = new Visit(null, timeOfDay, patient, doctor, visitDate);
+
 		DaoUtils.getVisitDao().create(visit);
 
 		insertVisit.setExpr(visit.getId().toString());
@@ -120,24 +120,18 @@ public class ClinicRestImpl {
 		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("cancelVisit.xml")));
 		return Response.ok(vxml, MediaType.TEXT_XML).build();
 	}
-	
-	public String dateGrammar() throws MalformedURLException, JAXBException, SQLException {
-		String vxml = null;
-		try {
-			vxml = new String(Files.readAllBytes(Paths.get(ProjectURL.getProjectURL("dateGrammar.xml"))));
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return vxml;
-		//new String(Files.readAllBytes(Paths.get(ProjectURL.getProjectURL("dateGrammar.xml"))));
-		//new Scanner(new File("filename")).useDelimiter("\\Z").next();
+
+	@SuppressWarnings("unchecked")
+	public Response dateGrammar() throws MalformedURLException, JAXBException, SQLException {
+		JAXBElement<Grammar> grammar = (JAXBElement<Grammar>) unmarshaller
+				.unmarshal(new File(ProjectURL.getProjectURL("dateGrammar.xml")));
+		return Response.ok(grammar, MediaType.TEXT_XML).build();
 	}
 
 	public Response checkPass(Integer patientId, Integer patientPassword)
 			throws MalformedURLException, JAXBException, SQLException {
 		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("checkAuth.xml")));
-		
+
 		Var response = (Var) vxml.getChildByNameOrId("response");
 		Var name = (Var) vxml.getChildByName("name");
 		Var surname = (Var) vxml.getChildByName("surname");
