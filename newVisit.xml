@@ -3,7 +3,9 @@
 	<form>
 		<var name="patientId" expr="patientId" />
 		<var name="doctorId" />
-		<var name="date" />
+		<var name="day" />
+		<var name="month" />
+		<var name="year" />
 		<var name="timeOfDayId" />
 
 		<subdialog method="post" name="selectDoctor"
@@ -33,21 +35,44 @@
 		<subdialog method="post" name="selectDate"
 			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/selectDate">
 			<filled>
-				<assign name="date" expr="selectDate.selectDate" />
+				<assign name="day" expr="selectDate.day" />
+				<assign name="month" expr="selectDate.month" />
+				<assign name="year" expr="selectDate.year" />
 				<prompt>
-					You provide.
-					<value expr="date" />
-					.
+
+					You said:
 				</prompt>
+				<if cond="day != undefined">
+					<prompt>
+						<value expr="day" />
+						,
+					</prompt>
+				</if>
+				<if cond="month != undefined">
+					<prompt>
+						<value expr="month" />
+						,
+					</prompt>
+				</if>
+				<if cond="year!= undefined">
+					<prompt>
+						<value expr="year" />
+					</prompt>
+					<prompt>
+						Thank you.
+					</prompt>
+				</if>
 			</filled>
 		</subdialog>
 
 		<subdialog method="post" name="insertVisit"
 			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/insertVisit"
-			namelist="patientId doctorId date timeOfDayId">
+			namelist="patientId doctorId day month year timeOfDayId">
 			<param name="patientId" expr="patientId" />
 			<param name="doctorId" expr="doctorId" />
-			<param name="date" expr="date" />
+			<param name="day" expr="day" />
+			<param name="month" expr="month" />
+			<param name="year" expr="year" />
 			<param name="timeOfDayId" expr="timeOfDayId" />
 		</subdialog>
 	</form>

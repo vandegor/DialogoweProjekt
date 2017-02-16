@@ -36,9 +36,9 @@ public class ClinicRest {
 	@Produces(MediaType.TEXT_XML)
 	@Consumes("application/x-www-form-urlencoded")
 	public Response insertVisit(@FormParam("patientId") Integer patientId, @FormParam("doctorId") Integer doctorId,
-			@FormParam("date") String date, @FormParam("timeOfDayId") Integer timeOfDayId)
+			@FormParam("day") String day, @FormParam("month") String month, @FormParam("year") String year, @FormParam("timeOfDayId") Integer timeOfDayId)
 			throws MalformedURLException, JAXBException, SQLException, ParseException {
-		return clinicRestImpl.insertVisit(patientId, doctorId, date, timeOfDayId);
+		return clinicRestImpl.insertVisit(patientId, doctorId, day, month, year, timeOfDayId);
 	}
 
 	@POST
@@ -121,10 +121,17 @@ public class ClinicRest {
 			throws MalformedURLException, JAXBException, SQLException {
 		return clinicRestImpl.cancelVisit(patientId);
 	}
+	
+	@GET
+	@Path("/dateGrammar")
+	@Produces(MediaType.TEXT_XML)
+	public String dateGrammar() throws MalformedURLException, JAXBException, SQLException {
+		return clinicRestImpl.dateGrammar();
+	}
 
 	@POST
 	@Path("/checkPass")
-	@Produces(MediaType.TEXT_XML)
+	@Produces(MediaType.TEXT_PLAIN)
 	@Consumes("application/x-www-form-urlencoded")
 	public Response checkPass(@FormParam("patientId") Integer patientId,
 			@FormParam("patientPassword") Integer patientPassword)

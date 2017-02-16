@@ -1,13 +1,17 @@
 package pl.clinic.rest;
 
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
 import java.sql.SQLException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -38,17 +42,15 @@ public class ClinicRestImpl {
 		return vxml;
 	}
 
-	public Response insertVisit(Integer patientId, Integer doctorId, String date, Integer timeOfDayId)
+	public Response insertVisit(Integer patientId, Integer doctorId, String day, String month, String year, Integer timeOfDayId)
 			throws MalformedURLException, JAXBException, SQLException, ParseException {
 		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("insertVisit.xml")));
 		Form form = (Form) vxml.getDataOrCatchOrHelp().get(0);
 		Var insertVisit = (Var) form.getCatchOrHelpOrNoinput().get(0);
-
 		Patient patient = DaoUtils.getPatientDao().queryForId(patientId);
 		Doctor doctor = DaoUtils.getDoctorDao().queryForId(doctorId);
-		Date visitDate = new SimpleDateFormat("yyyyMMdd").parse(date);
+		Date visitDate = new SimpleDateFormat("yyyyMMdd").parse(year+month+day);
 		TimeOfDay timeOfDay = DaoUtils.getTimeOfDayDao().queryForId(timeOfDayId);
-
 		Visit visit = new Visit(null, timeOfDay, patient, doctor, visitDate);
 		DaoUtils.getVisitDao().create(visit);
 
@@ -117,6 +119,19 @@ public class ClinicRestImpl {
 	public Response cancelVisit(Integer patientId) throws MalformedURLException, JAXBException, SQLException {
 		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("cancelVisit.xml")));
 		return Response.ok(vxml, MediaType.TEXT_XML).build();
+	}
+	
+	public String dateGrammar() throws MalformedURLException, JAXBException, SQLException {
+		String vxml = null;
+		try {
+			vxml = new String(Files.readAllBytes(Paths.get(ProjectURL.getProjectURL("dateGrammar.xml"))));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return vxml;
+		//new String(Files.readAllBytes(Paths.get(ProjectURL.getProjectURL("dateGrammar.xml"))));
+		//new Scanner(new File("filename")).useDelimiter("\\Z").next();
 	}
 
 	public Response checkPass(Integer patientId, Integer patientPassword)

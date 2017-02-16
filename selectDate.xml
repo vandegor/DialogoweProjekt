@@ -1,11 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml xmlns="http://www.w3.org/2001/vxml" version="2.1">
 	<form>
-		<field name="selectDate" type="date">
-			<prompt>Please provide date for visit.</prompt>
-		</field>
-		<block>
-			<return namelist="selectDate" />
+    <grammar src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/dateGrammar.xml#DATE" type="application/grammar-xml"/>
+
+        <initial name="beginner">
+            <prompt>
+                Welcome! Please provide visit date
+            </prompt>
+
+            <nomatch count="2">
+                Okay, I'll ask you for information one piece at a time.
+                <assign name="beginner" expr="true"/>
+                <reprompt/>
+            </nomatch>
+        </initial>
+        <field name="day">
+            <prompt>Please enter day</prompt>
+            <grammar src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/dateGrammar.xml#DAY" type="application/grammar-xml"/>
+        </field>
+        <field name="month">
+            <prompt>Please enter month</prompt>
+            <grammar src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/dateGrammar.xml#MONTH" type="application/grammar-xml"/>
+        </field>
+        <field name="year">
+            <prompt>Please enter year</prompt>
+            <grammar src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/dateGrammar.xml#YEAR" type="application/grammar-xml"/>
+        </field>
+        <filled namelist="day month year">
+            <prompt>
+                You said:
+            </prompt>
+            <if cond="day != undefined">
+                <prompt><value expr="day"/>,</prompt>
+            </if>
+            <if cond="month != undefined">
+                <prompt><value expr="month"/>,</prompt>
+            </if>
+            <if cond="year!= undefined">
+                <prompt><value expr="year"/></prompt>
+            </if>
+            <exit/>
+        </filled>
+        <block>
+			<return namelist="day month year" />
 		</block>
-	</form>
+    </form>
 </vxml>
