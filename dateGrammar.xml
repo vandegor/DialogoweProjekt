@@ -152,18 +152,18 @@
 					<ruleref uri="#FILL_MONTH_BEFORE"/>
 				</item>
 				<one-of>
-					<item>january<tag>out.month="01";</tag></item>
-					<item>february<tag>out.month="02";</tag></item>
-					<item>march<tag>out.month="03";</tag></item>
-					<item>april<tag>out.month="04";</tag></item>
-					<item>may<tag>out.month="05";</tag></item>
-					<item>june<tag>out.month="06";</tag></item>
-					<item>july<tag>out.month="07";</tag></item>
-					<item>august<tag>out.month="08";</tag></item>
-					<item>september<tag>out.month="09";</tag></item>
-					<item>october<tag>out.month="10";</tag></item>
-					<item>november<tag>out.month="11";</tag></item>
-					<item>december<tag>out.month="12";</tag></item>
+					<item>january<tag>out.month="january";</tag></item>
+					<item>february<tag>out.month="february";</tag></item>
+					<item>march<tag>out.month="march";</tag></item>
+					<item>april<tag>out.month="april";</tag></item>
+					<item>may<tag>out.month="may";</tag></item>
+					<item>june<tag>out.month="june";</tag></item>
+					<item>july<tag>out.month="july";</tag></item>
+					<item>august<tag>out.month="august";</tag></item>
+					<item>september<tag>out.month="september";</tag></item>
+					<item>october<tag>out.month="october";</tag></item>
+					<item>november<tag>out.month="november";</tag></item>
+					<item>december<tag>out.month="december";</tag></item>
 				</one-of>
 				<item repeat="0-1">
 					<ruleref uri="#FILL_MONTH_AFTER"/>

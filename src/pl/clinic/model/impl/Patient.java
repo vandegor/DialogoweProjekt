@@ -1,12 +1,14 @@
 package pl.clinic.model.impl;
 
+import java.lang.reflect.Field;
+
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-import pl.clinic.model.ModelInterface;
+import pl.clinic.model.abstractImpl.ModelAbstract;
 
 @DatabaseTable
-public class Patient implements ModelInterface {
+public class Patient extends ModelAbstract {
 	@DatabaseField(generatedId = true)
 	private Integer id;
 
@@ -62,10 +64,11 @@ public class Patient implements ModelInterface {
 		this.name = name;
 		this.password = password;
 	}
-
 	@Override
+	protected Object getFieldValue(Field field) throws IllegalAccessException, IllegalArgumentException {
+		return field.get(this);
+	}@Override
 	public String toString() {
-		return this.name + this.surname;
+		return this.surname;
 	}
-
 }

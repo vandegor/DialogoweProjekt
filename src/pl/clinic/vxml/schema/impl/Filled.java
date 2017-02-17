@@ -20,6 +20,8 @@ import javax.xml.bind.annotation.XmlMixed;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlType;
 
+import pl.clinic.vxml.schema.abstractImpl.AbstractVC;
+
 
 /**
  * <p>Java class for anonymous complex type.
@@ -45,7 +47,7 @@ import javax.xml.bind.annotation.XmlType;
     "content"
 })
 @XmlRootElement(name = "filled")
-public class Filled {
+public class Filled extends AbstractVC {
 
     @XmlElementRefs({
         @XmlElementRef(name = "value", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
@@ -175,5 +177,10 @@ public class Filled {
         }
         return this.namelist;
     }
+
+	@Override
+	public List<java.lang.Object> getObjectChildrens() {
+		return getContent();
+	}
 
 }

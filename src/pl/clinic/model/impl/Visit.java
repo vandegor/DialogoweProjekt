@@ -1,14 +1,15 @@
 package pl.clinic.model.impl;
 
+import java.lang.reflect.Field;
 import java.util.Date;
 
 import com.j256.ormlite.field.DatabaseField;
 import com.j256.ormlite.table.DatabaseTable;
 
-import pl.clinic.model.ModelInterface;
+import pl.clinic.model.abstractImpl.ModelAbstract;
 
 @DatabaseTable
-public class Visit implements ModelInterface {
+public class Visit extends ModelAbstract {
 	@DatabaseField(generatedId = true)
 	private Integer id;
 
@@ -76,5 +77,8 @@ public class Visit implements ModelInterface {
 		this.doctor = doctor;
 		this.date = date;
 	}
-
+	@Override
+	protected Object getFieldValue(Field field) throws IllegalAccessException, IllegalArgumentException {
+		return field.get(this);
+	}
 }

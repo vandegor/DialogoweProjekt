@@ -1,10 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <vxml xmlns="http://www.w3.org/2001/vxml" version="2.1">
-	<form>
-		<field name="selectTime">
-		</field>
+	<form id="selectTime">
+		<initial name="selectTime">
+		</initial>
+		<field name="id"><prompt/></field>
+		<field name="name"><prompt/></field>
 		<block>
-			<return namelist="selectTime" />
+			<return namelist="id name" />
 		</block>
 	</form>
 </vxml>

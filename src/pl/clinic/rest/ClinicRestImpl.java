@@ -8,6 +8,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -22,9 +23,9 @@ import pl.clinic.model.impl.TimeOfDay;
 import pl.clinic.model.impl.Visit;
 import pl.clinic.model.utils.DaoUtils;
 import pl.clinic.model.utils.ProjectURL;
-import pl.clinic.vxml.schema.impl.Field;
 import pl.clinic.vxml.schema.impl.Form;
 import pl.clinic.vxml.schema.impl.Grammar;
+import pl.clinic.vxml.schema.impl.Initial;
 import pl.clinic.vxml.schema.impl.Var;
 import pl.clinic.vxml.schema.impl.Vxml;
 import pl.clinic.vxml.schema.utils.UnmarshallerUtils;
@@ -47,7 +48,7 @@ public class ClinicRestImpl {
 
 		Patient patient = DaoUtils.getPatientDao().queryForId(patientId);
 		Doctor doctor = DaoUtils.getDoctorDao().queryForId(doctorId);
-		Date visitDate = new SimpleDateFormat("yyyyMMdd").parse(year + month + day);
+		Date visitDate = new SimpleDateFormat("yyyyMMMMMdd", Locale.US).parse(year + month + day);
 		TimeOfDay timeOfDay = DaoUtils.getTimeOfDayDao().queryForId(timeOfDayId);
 
 		Visit visit = new Visit(null, timeOfDay, patient, doctor, visitDate);
@@ -66,13 +67,14 @@ public class ClinicRestImpl {
 	public Response selectDoctor(Integer patientId) throws MalformedURLException, JAXBException, SQLException {
 
 		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("selectDoctor.xml")));
-		Field field = (Field) vxml.getChildByName("selectDoctor");
+		Form form = (Form) vxml.getChildById("selectDoctor");
+		Initial initial = (Initial) vxml.getChildByName("selectDoctor");
 
 		List<ModelInterface> surnames = new ArrayList<ModelInterface>(DaoUtils.getDoctorDao().queryForAll());
 		List<ModelInterface> surnamesWithDot = new ArrayList<ModelInterface>(DaoUtils.getDoctorDao().queryForAll());
 
-		field.getContent().add(VxmlBuilder.buildVxmlSpeak("Please provide doctor Name for visit.", surnamesWithDot));
-		field.getContent().add(VxmlBuilder.buildGrammar(field.getName(), surnames));
+		initial.getContent().add(VxmlBuilder.buildVxmlSpeak("Please provide doctor Name for visit.", surnamesWithDot));
+		form.getCatchOrHelpOrNoinput().add(0, VxmlBuilder.buildGrammar(form.getId(), surnames));
 
 		return Response.ok(vxml, MediaType.TEXT_XML).build();
 	}
@@ -80,13 +82,14 @@ public class ClinicRestImpl {
 	public Response selectTime(Integer patientId) throws MalformedURLException, JAXBException, SQLException {
 
 		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("selectTime.xml")));
-		Field field = (Field) vxml.getChildByName("selectTime");
+		Form form = (Form) vxml.getChildById("selectTime");
+		Initial initial = (Initial) vxml.getChildByName("selectTime");
 
 		List<ModelInterface> times = new ArrayList<ModelInterface>(DaoUtils.getTimeOfDayDao().queryForAll());
 		List<ModelInterface> timesWithDot = new ArrayList<ModelInterface>(DaoUtils.getTimeOfDayDao().queryForAll());
 
-		field.getContent().add(VxmlBuilder.buildVxmlSpeak("Please provide time for visit.", timesWithDot));
-		field.getContent().add(VxmlBuilder.buildGrammar(field.getName(), times));
+		initial.getContent().add(VxmlBuilder.buildVxmlSpeak("Please provide time for visit.", timesWithDot));
+		form.getCatchOrHelpOrNoinput().add(0, VxmlBuilder.buildGrammar(form.getId(), times));
 
 		return Response.ok(vxml, MediaType.TEXT_XML).build();
 	}

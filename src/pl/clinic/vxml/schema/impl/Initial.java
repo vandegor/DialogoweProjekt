@@ -22,6 +22,8 @@ import javax.xml.bind.annotation.XmlType;
 import javax.xml.bind.annotation.adapters.CollapsedStringAdapter;
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 
+import pl.clinic.vxml.schema.abstractImpl.AbstractNVC;
+
 
 /**
  * <p>Java class for anonymous complex type.
@@ -52,7 +54,7 @@ import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
     "content"
 })
 @XmlRootElement(name = "initial")
-public class Initial {
+public class Initial extends AbstractNVC{
 
     @XmlElementRefs({
         @XmlElementRef(name = "value", namespace = "http://www.w3.org/2001/vxml", type = JAXBElement.class, required = false),
@@ -188,5 +190,10 @@ public class Initial {
     public void setName(String value) {
         this.name = value;
     }
+
+	@Override
+	public List<java.lang.Object> getObjectChildrens() {
+		return getContent();
+	}
 
 }
