@@ -16,6 +16,8 @@ import javax.xml.bind.JAXBElement;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Unmarshaller;
 
+import org.apache.jasper.tagplugins.jstl.core.ForEach;
+
 import pl.clinic.model.ModelInterface;
 import pl.clinic.model.impl.Doctor;
 import pl.clinic.model.impl.Patient;
@@ -101,6 +103,18 @@ public class ClinicRestImpl {
 
 	public Response selectVisit(Integer patientId) throws MalformedURLException, JAXBException, SQLException {
 		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("selectVisit.xml")));
+		List<ModelInterface> visits = new ArrayList<ModelInterface>(DaoUtils.getPatientDao().queryForEq("Visit", patientId.toString()));
+		Var param = (Var) vxml.getChildByName("visitsID");
+		String visitsId = "";
+		for (int i = 0 ; i < visits.size(); i++){
+			Visit visit = (Visit) visits.get(i);
+			if((i-1)==visits.size()){
+				visitsId = visitsId + visit.getId();
+			}
+			else visitsId = visitsId + visit.getId()+",";
+		}
+		param.setExpr("'"+"new Array("+visitsId + ")"+"'");
+		
 		return Response.ok(vxml, MediaType.TEXT_XML).build();
 	}
 
