@@ -108,7 +108,7 @@ public class ClinicRestImpl {
 		String visitsId = "";
 		for (int i = 0 ; i < visits.size(); i++){
 			Visit visit = (Visit) visits.get(i);
-			if((i-1)==visits.size()){
+			if(i==visits.size()-1){
 				visitsId = visitsId + visit.getId();
 			}
 			else visitsId = visitsId + visit.getId()+",";
