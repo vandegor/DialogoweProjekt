@@ -60,8 +60,17 @@ public class ClinicRestImpl {
 		return Response.ok(vxml, MediaType.TEXT_XML).build();
 	}
 
-	public Response deleteVisit(Integer patientId) throws MalformedURLException, JAXBException, SQLException {
-		return Response.ok().build();
+	public Response deleteVisit(Integer visitId)
+			throws MalformedURLException, JAXBException, SQLException, ParseException {
+
+		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("deleteVisit.xml")));
+		Var updateVisit = (Var) vxml.getChildByName("deleteVisit");
+
+		int toReturn = DaoUtils.getVisitDao().deleteById(visitId);
+
+		updateVisit.setExpr("" + toReturn);
+
+		return Response.ok(vxml, MediaType.TEXT_XML).build();
 	}
 
 	public Response selectDoctor(Integer patientId) throws MalformedURLException, JAXBException, SQLException {
@@ -101,11 +110,16 @@ public class ClinicRestImpl {
 
 	public Response selectVisit(Integer patientId) throws MalformedURLException, JAXBException, SQLException {
 		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("selectVisit.xml")));
-		return Response.ok(vxml, MediaType.TEXT_XML).build();
-	}
 
-	public Response listVisits(Integer patientId) throws MalformedURLException, JAXBException, SQLException {
-		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("listVisits.xml")));
+		Form form = (Form) vxml.getChildById("selectVisit");
+		Initial initial = (Initial) vxml.getChildByName("selectVisit");
+
+		List<Visit> visitList = new ArrayList<Visit>(DaoUtils.getVisitDao().queryForEq("patient_id", patientId));
+		visitList.removeIf(visit->visit.getDate().before(new Date()));
+
+		initial.getContent().addAll(VxmlBuilder.buildVxmlSpeakForVisit("Please provide, ID: ", visitList));
+		form.getCatchOrHelpOrNoinput().add(0, VxmlBuilder.buildGrammarForVisit(form.getId(), visitList));
+
 		return Response.ok(vxml, MediaType.TEXT_XML).build();
 	}
 
@@ -147,6 +161,25 @@ public class ClinicRestImpl {
 		} else {
 			response.setExpr("'NO'");
 		}
+		return Response.ok(vxml, MediaType.TEXT_XML).build();
+	}
+
+	public Response updateVisit(Integer doctorId, String day, String month, String year, Integer timeOfDayId,
+			Integer visitId) throws JAXBException, SQLException, ParseException {
+
+		Vxml vxml = (Vxml) unmarshaller.unmarshal(new File(ProjectURL.getProjectURL("updateVisit.xml")));
+
+		Var updateVisit = (Var) vxml.getChildByName("updateVisit");
+
+		Visit visit = DaoUtils.getVisitDao().queryForId(visitId);
+		visit.setDoctor(DaoUtils.getDoctorDao().queryForId(doctorId));
+		visit.setDate(new SimpleDateFormat("yyyyMMMMMdd", Locale.US).parse(year + month + day));
+		visit.setTime(DaoUtils.getTimeOfDayDao().queryForId(timeOfDayId));
+
+		DaoUtils.getVisitDao().update(visit);
+
+		updateVisit.setExpr(visit.getId().toString());
+
 		return Response.ok(vxml, MediaType.TEXT_XML).build();
 	}
 

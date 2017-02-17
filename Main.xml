@@ -4,15 +4,13 @@
 		<block>
 			<prompt>Welcome, in Clinic XYZ system.</prompt>
 		</block>
-		<field name="patientId" type="digits?minlength=1;maxlength=2"
-			expr="1">
+		<field name="patientId" type="digits?minlength=1;maxlength=2">
 			<prompt>Please enter your patient number.</prompt>
 		</field>
-		<field name="patientPassword" type="digits?minlength=1;maxlength=2"
-			expr="10">
+		<field name="patientPassword" type="digits?minlength=1;maxlength=2">
 			<prompt>Please enter your password number.</prompt>
 		</field>
-		<subdialog method="post" name="checkresults"  expr="1"
+		<subdialog method="post" name="checkresults"
 			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/checkPass"
 			namelist="patientPassword patientId">
 			<param name="patientId" expr="patientId" />
@@ -41,7 +39,7 @@
 				</if>
 			</filled>
 		</subdialog>
-		<field name="actionType" expr="'new'">
+		<field name="actionType">
 			<prompt>
 				Please provide information what action do you want to take.
 				New visit, Postpone visit, Cancel visit

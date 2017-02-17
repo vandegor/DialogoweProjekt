@@ -1,27 +1,146 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <vxml xmlns="http://www.w3.org/2001/vxml" version="2.1">
-
 	<form>
-		<var name="checkresults.patientId" expr="checkresults.patientId" />
+		<var name="patientId" expr="patientId" />
+		<var name="doctorId" />
+		<var name="doctorName" />
+		<var name="doctorSurname" />
+		<var name="day" />
+		<var name="month" />
+		<var name="year" />
+		<var name="timeOfDayId" />
+		<var name="timeOfDayName" />
+		<var name="visitId" />
+
+
 		<subdialog method="post" name="selectVisit"
 			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/selectVisit"
-			namelist="checkresults.patientId">
-			<param name="checkresults.patientId" expr="checkresults.patientId" />
+			namelist="patientId">
+			<param name="patientId" expr="patientId" />
+			<filled>
+				<assign name="visitId" expr="selectVisit.visitId" />
+				<prompt>
+					You provide,
+					<value expr="visitId" />
+					,
+				</prompt>
+			</filled>
 		</subdialog>
+
 		<subdialog method="post" name="selectDoctor"
-			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/selectDoctor"
-			namelist="checkresults.patientId">
-			<param name="checkresults.patientId" expr="checkresults.patientId" />
+			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/selectDoctor">
+			<filled>
+				<assign name="doctorId" expr="selectDoctor.id" />
+				<assign name="doctorName" expr="selectDoctor.name" />
+				<assign name="doctorSurname" expr="selectDoctor.surname" />
+				<prompt>
+					You provide,
+					<value expr="selectDoctor.surname" />
+					,
+					<value expr="selectDoctor.name" />
+					,
+				</prompt>
+			</filled>
 		</subdialog>
-		<subdialog method="post" name="selectDate"
-			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/selectDate"
-			namelist="checkresults.patientId">
-			<param name="checkresults.patientId" expr="checkresults.patientId" />
-		</subdialog>
+
 		<subdialog method="post" name="selectTime"
-			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/selectTime"
-			namelist="checkresults.patientId">
-			<param name="checkresults.patientId" expr="checkresults.patientId" />
+			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/selectTime">
+			<filled>
+				<assign name="timeOfDayId" expr="selectTime.id" />
+				<assign name="timeOfDayName" expr="selectTime.name" />
+				<prompt>
+					You provide,
+					<value expr="timeOfDayName" />
+					,
+				</prompt>
+			</filled>
+		</subdialog>
+
+		<subdialog method="post" name="selectDate"
+			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/selectDate">
+			<filled>
+				<assign name="day" expr="selectDate.day" />
+				<assign name="month" expr="selectDate.month" />
+				<assign name="year" expr="selectDate.year" />
+				<prompt>
+					You provide.
+					<value expr="day" />
+					,
+					<value expr="month" />
+					,
+					<value expr="year" />
+					,
+				</prompt>
+			</filled>
+		</subdialog>
+
+		<field name="correct">
+
+			<prompt>
+				You provide.
+				Doctor:
+				<value expr="doctorName" />
+				,
+				<value expr="doctorSurname" />
+				.
+				Time of day:
+				<value expr="timeOfDayName" />
+				.
+				And Date:
+				<value expr="day" />
+				,
+				<value expr="month" />
+				,
+				<value expr="year" />
+				.
+				It is correct? Yes. No.
+			</prompt>
+
+			<grammar xml:lang="en-us">
+				<rule>
+					<one-of>
+						<item>YES</item>
+						<item>NO</item>
+					</one-of>
+				</rule>
+			</grammar>
+
+			<filled>
+				<if cond="correct=='NO'">
+					<clear namelist="selectDoctor selectTime selectDate" />
+					<prompt>
+						Please try again.
+					</prompt>
+				</if>
+			</filled>
+		</field>
+
+		<subdialog method="post" name="updateVisit"
+			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/updateVisit"
+			namelist="patientId doctorId day month year timeOfDayId visitId">
+			<param name="patientId" expr="patientId" />
+			<param name="doctorId" expr="doctorId" />
+			<param name="day" expr="day" />
+			<param name="month" expr="month" />
+			<param name="year" expr="year" />
+			<param name="timeOfDayId" expr="timeOfDayId" />
+			<param name="visitId" expr="visitId" />
+			<filled>
+				<if cond="updateVisit.updateVisit==1">
+					<prompt>
+						You correctly postpone visit.
+						<value expr="visitId" />
+						,
+					</prompt>
+					<else />
+					<prompt>
+						Sorry we got error while attempt postpone visit.
+						<value expr="visitId" />
+						,
+					</prompt>
+				</if>
+				<assign name="visitId" expr="updateVisit.updateVisit" />
+			</filled>
 		</subdialog>
 	</form>
 </vxml>

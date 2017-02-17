@@ -2,6 +2,42 @@
 <vxml xmlns="http://www.w3.org/2001/vxml" version="2.1">
 	<form>
 		<var name="patientId" expr="patientId" />
-		
+		<var name="visitId" />
+
+		<subdialog method="post" name="selectVisit"
+			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/selectVisit"
+			namelist="patientId">
+			<param name="patientId" expr="patientId" />
+			<filled>
+				<assign name="visitId" expr="selectVisit.visitId" />
+				<prompt>
+					You provide,
+					<value expr="visitId" />
+					,
+				</prompt>
+			</filled>
+		</subdialog>
+
+		<subdialog method="post" name="deleteVisit"
+			src="http://89.67.185.108:8079/DialogoweProjekt/rest/clinicRest/deleteVisit"
+			namelist="visitId">
+			<param name="visitId" expr="visitId" />
+			<filled>
+				<if cond="deleteVisit.deleteVisit==1">
+					<prompt>
+						You correctly cancel visit.
+						<value expr="visitId" />
+						,
+					</prompt>
+					<else />
+					<prompt>
+						Sorry we got error while attempt cancel visit.
+						<value expr="visitId" />
+						,
+					</prompt>
+				</if>
+			</filled>
+		</subdialog>
+
 	</form>
 </vxml>

@@ -34,18 +34,30 @@ public class ClinicRest {
 	@Produces(MediaType.TEXT_XML)
 	@Consumes("application/x-www-form-urlencoded")
 	public Response insertVisit(@FormParam("patientId") Integer patientId, @FormParam("doctorId") Integer doctorId,
-			@FormParam("day") String day, @FormParam("month") String month, @FormParam("year") String year, @FormParam("timeOfDayId") Integer timeOfDayId)
+			@FormParam("day") String day, @FormParam("month") String month, @FormParam("year") String year,
+			@FormParam("timeOfDayId") Integer timeOfDayId)
 			throws MalformedURLException, JAXBException, SQLException, ParseException {
 		return clinicRestImpl.insertVisit(patientId, doctorId, day, month, year, timeOfDayId);
+	}
+
+	@POST
+	@Path("/updateVisit")
+	@Produces(MediaType.TEXT_XML)
+	@Consumes("application/x-www-form-urlencoded")
+	public Response updateVisit(@FormParam("doctorId") Integer doctorId, @FormParam("day") String day,
+			@FormParam("month") String month, @FormParam("year") String year,
+			@FormParam("timeOfDayId") Integer timeOfDayId, @FormParam("visitId") Integer visitId)
+			throws MalformedURLException, JAXBException, SQLException, ParseException {
+		return clinicRestImpl.updateVisit(doctorId, day, month, year, timeOfDayId, visitId);
 	}
 
 	@POST
 	@Path("/deleteVisit")
 	@Produces(MediaType.TEXT_XML)
 	@Consumes("application/x-www-form-urlencoded")
-	public Response deleteVisit(@FormParam("patientId") Integer patientId)
-			throws MalformedURLException, JAXBException, SQLException {
-		return clinicRestImpl.deleteVisit(patientId);
+	public Response deleteVisit(@FormParam("visitId") Integer visitId)
+			throws MalformedURLException, JAXBException, SQLException, ParseException {
+		return clinicRestImpl.deleteVisit(visitId);
 	}
 
 	@POST
@@ -85,15 +97,6 @@ public class ClinicRest {
 	}
 
 	@POST
-	@Path("/listVisits")
-	@Produces(MediaType.TEXT_XML)
-	@Consumes("application/x-www-form-urlencoded")
-	public Response listVisits(@FormParam("patientId") Integer patientId)
-			throws MalformedURLException, JAXBException, SQLException {
-		return clinicRestImpl.listVisits(patientId);
-	}
-
-	@POST
 	@Path("/newVisit")
 	@Produces(MediaType.TEXT_XML)
 	@Consumes("application/x-www-form-urlencoded")
@@ -119,7 +122,7 @@ public class ClinicRest {
 			throws MalformedURLException, JAXBException, SQLException {
 		return clinicRestImpl.cancelVisit(patientId);
 	}
-	
+
 	@GET
 	@Path("/dateGrammar")
 	@Produces(MediaType.TEXT_XML)

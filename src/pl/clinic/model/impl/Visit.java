@@ -13,13 +13,13 @@ public class Visit extends ModelAbstract {
 	@DatabaseField(generatedId = true)
 	private Integer id;
 
-	@DatabaseField(canBeNull = false, foreign = true)
+	@DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
 	private TimeOfDay time;
 
-	@DatabaseField(canBeNull = false, foreign = true)
+	@DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
 	private Patient patient;
 
-	@DatabaseField(canBeNull = false, foreign = true)
+	@DatabaseField(canBeNull = false, foreign = true, foreignAutoRefresh = true)
 	private Doctor doctor;
 
 	@DatabaseField(canBeNull = false)
@@ -77,6 +77,7 @@ public class Visit extends ModelAbstract {
 		this.doctor = doctor;
 		this.date = date;
 	}
+
 	@Override
 	protected Object getFieldValue(Field field) throws IllegalAccessException, IllegalArgumentException {
 		return field.get(this);
