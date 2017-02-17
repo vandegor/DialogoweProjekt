@@ -54,14 +54,14 @@ public class VxmlBuilder {
 		String[] date = new SimpleDateFormat("yyyy MMMMM dd", Locale.US).format(visit.getDate()).split(" ");
 
 		buildMap(map, "visitId", visit.getId().toString());
-		//buildMap(map, "doctorId", visit.getDoctor().getId().toString());
-		//buildMap(map, "doctorName", visit.getDoctor().getName());
-		//buildMap(map, "doctorSurname", visit.getDoctor().getSurname());
-		//buildMap(map, "year", date[0]);
-		//buildMap(map, "month", date[1]);
-		//buildMap(map, "day", date[2]);
-		//buildMap(map, "timeOfDayId", visit.getTime().getId().toString());
-		//buildMap(map, "timeOfDayName", visit.getTime().getName().toString());
+		// buildMap(map, "doctorId", visit.getDoctor().getId().toString());
+		// buildMap(map, "doctorName", visit.getDoctor().getName());
+		// buildMap(map, "doctorSurname", visit.getDoctor().getSurname());
+		// buildMap(map, "year", date[0]);
+		// buildMap(map, "month", date[1]);
+		// buildMap(map, "day", date[2]);
+		// buildMap(map, "timeOfDayId", visit.getTime().getId().toString());
+		// buildMap(map, "timeOfDayName", visit.getTime().getName().toString());
 
 		return map;
 	}
@@ -75,10 +75,10 @@ public class VxmlBuilder {
 		return root;
 	}
 
-	public static VxmlSpeak buildVisitVxmlSpeak(Visit visit) {
+	private static VxmlSpeak buildVisitVxmlSpeak(Visit visit) {
 		VxmlSpeak speak = factory.createVxmlSpeak();
 		String speakString = "";
-		speakString += ", ID ,"+visit.getId().toString();
+		speakString += ", ID ," + visit.getId().toString();
 		speakString += ", doctor: " + visit.getDoctor().getName() + ", " + visit.getDoctor().getSurname();
 		speakString += ", date: " + new SimpleDateFormat("dd, MMMMM, yyyy", Locale.US).format(visit.getDate());
 		speakString += ", Time Of Day: " + visit.getTime().getName().toString() + ",";
@@ -126,7 +126,7 @@ public class VxmlBuilder {
 		return oneOf;
 	}
 
-	public static List<JAXBElement<String>> buildItemTags(ModelInterface modelObject) {
+	private static List<JAXBElement<String>> buildItemTags(ModelInterface modelObject) {
 		List<JAXBElement<String>> list = new ArrayList<JAXBElement<String>>();
 		for (Entry<String, Object> entry : modelObject.getFieldsMap().entrySet()) {
 			// if(entry.getKey().equals("id"))
@@ -140,7 +140,7 @@ public class VxmlBuilder {
 		return factory.createItemTag(s);
 	}
 
-	public static List<Item> buildItem(ModelInterface modelObject) {
+	private static List<Item> buildItem(ModelInterface modelObject) {
 		List<Item> rootItemList = new ArrayList<Item>();
 
 		Item rootItem = null;
@@ -172,14 +172,14 @@ public class VxmlBuilder {
 		return rootItemList;
 	}
 
-	public static void buildItem(Item rootItem, Iterator<Entry<String, Object>> i) {
+	private static void buildItem(Item rootItem, Iterator<Entry<String, Object>> i) {
 		for (; i.hasNext();) {
 			Entry<String, Object> entry = i.next();
 			rootItem.getContent().add((Serializable) buildItemItem(entry.getKey(), entry.getValue()));
 		}
 	}
 
-	public static JAXBElement<Item> buildItemItem(String fieldName, Object fieldValue) {
+	private static JAXBElement<Item> buildItemItem(String fieldName, Object fieldValue) {
 		Item item = factory.createItem();
 		item.getContent().add((Serializable) fieldValue);
 		// item.getContent().add(buildItemTag(fieldName, fieldValue));
