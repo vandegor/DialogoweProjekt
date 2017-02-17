@@ -126,7 +126,7 @@
 			<param name="timeOfDayId" expr="timeOfDayId" />
 			<param name="visitId" expr="visitId" />
 			<filled>
-				<if cond="updateVisit.updateVisit==1">
+				<if cond="updateVisit.updateVisit=='1'">
 					<prompt>
 						You correctly postpone visit.
 						<value expr="visitId" />
